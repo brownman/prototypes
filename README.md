@@ -29,5 +29,7 @@ learn_langs
 - language: python ( utilize: pocketsphinx )
 
 
-- [edit](https://github.com/brownman/prototypes/generated_pages/new)
-- [view](http://brownman.github.io/prototypes/)
+-
+[edit](https://github.com/brownman/prototypes/generated_pages/new)
+-
+[view](http://brownman.github.io/prototypes/)
