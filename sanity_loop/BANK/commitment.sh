@@ -36,6 +36,9 @@ flite1 "next easy mission"
     if [ "$line" = exit ];then
         xcowsay exiting
         exit 1
+    elif [ "$line" = delete ];then
+         echo -n fresh start > $file_done  
+         return 0
     else
 
         #local line_new="\${color yellow} $time1\t \${color blue} $line"

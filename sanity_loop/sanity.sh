@@ -6,6 +6,7 @@ set -o nounset
 #export DISPLAY=:0
 pushd `dirname $0` >/dev/null
 source BANK/where_am_i.cfg
+source BANK/trace.cfg
 
 export dir_root=`where_am_i $0`
 echo 1>&2 dir_root: $dir_root 
@@ -82,7 +83,7 @@ use(){
 
   if [ -f "$file" ];then
     cmd="source $file"
-    echo 1>&2 $cmd
+    trace $cmd
     eval "$cmd"
 
   else
@@ -123,6 +124,7 @@ use ps4
 use trace    
 use pipe_translate
 use trap_err
+$cmd_trap_err
 
 export builtin_commitment=$( use_sh commitment )
 export builtin_translate=$( use_sh translate )
@@ -130,9 +132,9 @@ export builtin_translate=$( use_sh translate )
 
 loop(){
   while :;do
-    source $dir_root/vars.cfg
+    source $dir_root/SETUP/vars.cfg
     depend var file_language
-    eval "$builtin_commitment"
+    eval "$builtin_commitment" || break
     ( dialog_sleep 60 commitment ) || echo
 
   done
