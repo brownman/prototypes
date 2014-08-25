@@ -1,0 +1,14 @@
+wget
+curl
+xcowsay
+notify-send
+flite
+yad
+gxmessage
+zenity
+dhcpcd-gtk
+gxmessage
+yad
+libsox-fmt-mp3
+sox
+notify-osd
