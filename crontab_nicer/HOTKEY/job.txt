@@ -1,0 +1,2 @@
+xcowsay 'finding a job is sooo easy'&
+wmctrl -a mindmap  || google-chrome-stable mindmap

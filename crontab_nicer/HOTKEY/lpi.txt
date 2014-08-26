@@ -1,0 +1,2 @@
+xcowsay lpi
+wmctrl -a mindmap || google-chrome-stable 'http://drichard.org/mindmaps/'

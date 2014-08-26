@@ -1,0 +1,20 @@
+print_g gay sanity loop
+echo how to use this project?
+echo
+pv1 languages I want to learn:
+tree | egrep -h lang
+file_rel='.config/languages.txt'
+file_lang=\$dir/$file_rel
+echo "[ location? ] $file_rel"
+echo
+cat1 $file_lang true
+echo
+file_deps=\$dir/DEPLOY/INSTALL/dependencies.txt
+echo
+pv1 install dependencies:
+print ok sudo apt-get install "`cat $file_deps`"
+echo
+pv1 finally run the main script:
+print color 36 ./sanity.sh
+
+

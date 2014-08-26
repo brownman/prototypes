@@ -16,4 +16,12 @@ why:
 
 how:
 ---
-- run sanity.sh
+- run:
+```bash
+echo languages I want to learn:
+cat .config/languages.txt
+echo project dependencies:
+cat DEPLOY/install.txt
+./sanity.sh
+```
+

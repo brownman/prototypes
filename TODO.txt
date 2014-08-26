@@ -1,0 +1,3 @@
+- add screencasts
+- add ideas as advice for later dev
+- limit the frame/scope of the mini-project

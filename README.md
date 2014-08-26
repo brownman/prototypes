@@ -5,6 +5,13 @@ PROTOTYPES?!
 
 
 
+KICKING MY ASS
+===
+- I decided to make a showcase of my works, short examples, of many tiny ideas
+  with small implementation.
+- I am using my previous project: do_for_others_first as a framework 
+
+
 sanity-loop: 
 ------
 - info: type your doings every X minutes: a log will be updated + the   sentance will be translated 

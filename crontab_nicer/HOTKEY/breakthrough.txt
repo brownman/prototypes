@@ -1,0 +1,3 @@
+hotkey: xcowsay 'hotkey breakthrough'
+start: xcowsay 'start breakthrough'
+end: xcowsay 'end breakthrough'

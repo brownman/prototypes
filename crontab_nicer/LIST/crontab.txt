@@ -1,0 +1,16 @@
+task breakthrough 60
+
+task lpi 60
+task vlc 10
+
+task job 60 
+
+task sleep 200
+
+task eclipse 120
+
+
+
+
+
+

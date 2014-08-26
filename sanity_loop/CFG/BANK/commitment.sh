@@ -13,6 +13,7 @@ use flite1
 use pipe_translate
 use file_update
 use trap_err
+$cmd_trap_err
 #$cmd_trap_err
 #assert file_exist "$file_language"
 
@@ -35,9 +36,9 @@ flite1 "next easy mission"
 
     if [ "$line" = exit ];then
         xcowsay exiting
-        exit 1
+        exit 0
     elif [ "$line" = delete ];then
-         echo -n fresh start > $file_done  
+      echo -n '' > $file_done  
          return 0
     else
 
