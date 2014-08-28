@@ -19,5 +19,5 @@ how:
 
 demo:
 ---
-[demo_install] (./DEMO/install.gif)
-[demo_run] (./DEMO/run.gif)
+- [demo_install] (./DEMO/install.gif)
+- [demo_run] (./DEMO/run.gif)
