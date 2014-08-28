@@ -16,7 +16,6 @@ how:
 ---
 - use tool: wmctrl which lets you rise up a window - by identifing title or
   inner text
-```
 
 demo:
 ---
