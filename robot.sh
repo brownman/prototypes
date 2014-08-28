@@ -1,14 +1,14 @@
 
 clear
-#../record.sh &>/dev/null &
+../../record.sh false 60 &
 
 dir=$PWD
 #cmd_run=${1:-installation}
-cmd_run=${1:-running}
+cmd_run=${1:-installation}
 
 file_list=$dir/DEPLOY/PRESENT/${cmd_run}.txt
 
-source $dir_root/init.cfg
+source /tmp/library.cfg
 use where_am_i
 use commander
 use disown1

@@ -45,13 +45,14 @@ set -e
 
 loop(){
 #eval echo $str_caller
-  local delay=60
+  local delay=${1:-60}
   while :;do
 commander     $builtin_commitment $delay
 #    ( dialog_sleep "$delay" commitment ) || echo
 
   done
 }
-loop  
+
+loop ${@:-}
 
 popd >/dev/null

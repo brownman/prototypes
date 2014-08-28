@@ -1,0 +1,3 @@
+start: wmctrl -a certExam
+hotkey: wmctrl -a mindmap || ( google-chrome-stable 'http://drichard.org/mindmaps/' )
+end: xcowsay finish  

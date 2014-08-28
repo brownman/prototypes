@@ -1,0 +1,60 @@
+
+symlink1(){
+
+  if [ -f /tmp/service.sh ];then
+    if [ $# -gt 0 ];then
+      args="$@"
+      steps 
+
+      run $args
+    else
+      #        echo no arguments
+      notify-send "no arguments" "$0"
+      #ls -1 $dir_self/SH
+      steps 
+    fi
+  else
+    echo installing symlink first
+    #rm /tmp/service.sh
+    #commander ln_to_tmp "`who_am_i $0`"
+    #dir_self=$PWD
+    filename=`basename $0`
+    file=$dir_self/$filename
+
+    #ln -s $file /tmp
+
+  fi
+}
+validate_anchor(){
+
+  #type assert
+  if [ ! -f /tmp/hotkey.sh ] ;then
+    ln -s $file_hotkey /tmp
+    echo
+  fi
+  [ -f /tmp/hotkey.txt ] && rm /tmp/hotkey.txt
+
+}
+
+run(){
+  local runner=$1
+  shift
+  local args="${@:-}"
+  local cmd
+  local file="$dir_STEPPER/${runner}.sh"
+  if [ -f "$file" ];then
+
+    if [ "${args[@]}" = edit ];then
+      cmd="gvim -f $file"
+    else
+      cmd="$file $args"
+    fi
+    echo "[cmd] $cmd"
+    #  xcowsay "$cmd"
+    eval "$cmd"
+  else
+    notify-send "no such file: $file" "$0"
+  fi
+
+}
+

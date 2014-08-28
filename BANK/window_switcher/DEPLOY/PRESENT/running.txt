@@ -1,0 +1,9 @@
+#disown1 $dir/sanity.sh
+sleep 3 
+typer Easy 'hello world'
+xdotool key Tab
+xdotool key Return
+
+
+#wmctrl -a Easy 
+#gxmessage hi -entry -title Easy try &

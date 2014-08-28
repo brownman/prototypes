@@ -1,0 +1,9 @@
+lpi 60 'learning for lpi is sometimes super cool'
+
+breakthrough 60
+
+
+vlc 10
+job 60 
+sleep 200
+eclipse 120

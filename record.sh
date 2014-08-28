@@ -1,3 +1,4 @@
-source $dir_root/init.cfg
-#exec &>/tmp/screencast.txt
-use_sh screencast $@
+source /tmp/library.cfg
+use commander
+exec &>/tmp/screencast.txt
+commander use_sh screencast $@  &

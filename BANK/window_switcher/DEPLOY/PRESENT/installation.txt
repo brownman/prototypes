@@ -1,0 +1,32 @@
+seconds=3
+print_g gay window 
+print_g gay switcher
+echo how to use this project?
+sleep $seconds
+clear
+pv1 update the list of tasks:
+echo
+cat1 \$dir/LIST/tasks.txt true
+echo
+pv1 "each task should be described with: <name> <duration> <optional: description>"
+sleep $seconds
+clear
+file_deps=\$dir/DEPLOY/INSTALL/dependencies.txt
+echo
+pv1 install dependencies:
+cat1 $file_deps true
+sleep $seconds
+clear
+echo list of available tasks: 
+dir_task=\$dir/TASK
+use ls1
+ls1 \$dir_task
+print line
+sleep $seconds
+clear
+echo
+pv1 example for a simple task:
+cat1 \$dir/TASK/lpi.txt true
+pv1 how the loop run a task file ?
+pv1 it parses the text next to the label: 
+pv1 '/ <start> /<end> / <hotkey>'
