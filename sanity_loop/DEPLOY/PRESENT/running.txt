@@ -1,4 +1,4 @@
-disown1 $dir/sanity.sh
+#disown1 $dir/sanity.sh
 sleep 3 
 typer Easy 'hello world'
 xdotool key Tab

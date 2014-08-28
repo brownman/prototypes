@@ -24,4 +24,6 @@ echo project dependencies:
 cat DEPLOY/install.txt
 ./sanity.sh
 ```
+[demo_install] (./DEMO/install.gif)
 
+[demo_run] (./DEMO/run.gif)

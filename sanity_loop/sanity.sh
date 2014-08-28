@@ -43,15 +43,12 @@ trap trap_exit SIGTERM
 trap trap_exit EXIT
 set -e
 
-
 loop(){
-
-
-
+#eval echo $str_caller
   local delay=60
   while :;do
-    $builtin_commitment
-    ( dialog_sleep "$delay" commitment ) || echo
+commander     $builtin_commitment $delay
+#    ( dialog_sleep "$delay" commitment ) || echo
 
   done
 }
