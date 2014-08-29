@@ -1,5 +1,9 @@
 #[Products](https://github.com/brownman/prototypes)
 
+###[ gmail-droplist](https://github.com/brownman/prototypes/tree/develop/BANK/gmail-droplist)
+- info:         just another gmail interface
+- langauge:     bash
+
 ###[ sanity-loop](https://github.com/brownman/prototypes/tree/develop/BANK/sanity_loop)
 - info:         type your doings every X minutes: a log will be updated + the   sentance will be translated
 - langauge:     bash
@@ -32,4 +36,3 @@
 [css](https://github.com/brownman/prototypes/generated_pages/new)
 [view](http://brownman.github.io/prototypes/)
 [edit](https://github.com/brownman/prototypes/edit/develop/README.md)
-
