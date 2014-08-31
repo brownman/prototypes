@@ -1,0 +1,1 @@
+./generate_project.sh BANK/sanity_loop/DEPLOY/INSTALL/required.txt
