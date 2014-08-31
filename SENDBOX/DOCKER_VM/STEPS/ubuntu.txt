@@ -1,0 +1,4 @@
+docker pull ubuntu
+docker pull learn/tutorial
+docker run ubuntu:14.04 /bin/echo 'Hello world'
+docker run -t -i ubuntu:14.04 /bin/bash

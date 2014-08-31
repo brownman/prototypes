@@ -1,0 +1,45 @@
+
+steps:
+  - query: recompilig+deb
+  - url_from: https://www.google.co.il/search?q=recompiling+deb
+  - url_to: http://www.cyberciti.biz/faq/rebuilding-ubuntu-debian-linux-binary-package/
+    
+general: 
+  Packaging1:  ssh2 PECL 0.12 
+  extension: whenever PHP used on cli - auto-load the extension.
+  Bonus:  provide both deb and RPM.
+  bugs:   generate a patch for **one** unreleased bug fix(of v-0.12).
+  packaging2: build will apply the patch.
+
+ex0:
+  desc:  ssh2 PECL 0.12
+  url:   http://pecl.php.net/package/ssh2
+  #url:   http://google.com
+  cmd:   $BROWSER $url
+
+ex1:
+  desc: get the source
+  url:  google.com
+  cmd:  echo git clone \$url
+
+ex2:
+  desc: compile the source
+  cmd:  make
+
+ex3:
+  desc: pick up a bug fix
+  cmd:  $browser $url
+
+ex4:
+  desc: convert a bug fix to a patch
+  cmd:  $browser commandlinefu patch  
+
+ex5:
+  desc: use <debian> build tool for creating a package
+  cmd:  debuild my-package $dir
+
+ex6:
+  desc: ex5 + patch
+  cmd:  use debian patching 
+
+
