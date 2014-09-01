@@ -3,8 +3,8 @@
 #https://github.com/travis-ci/travis-yaml/blob/master/spec/nodes/git_spec.rb
 #  - gxmessage libnotify-bin gmail-notify curl vim-gtk pv cowsay toilet figlet sox libsox-fmt-mp3
 before_install:
-  - sudo apt-get install -y fortune pv toilet curl wget tree gxmessage yad zenity xcowsay notify-osd toilet figlet sox libsox-fmt-mp3
-
+  - ./.install_deps.sh
+   
 language: bash
 git:
   submodules: false
