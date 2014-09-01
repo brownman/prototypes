@@ -9,7 +9,7 @@ language: bash
 git:
   submodules: false
 before_script: ./LIB/install.sh
-script:       tree
+script:       ./present.sh
 after_script: bash #-c 'echo bye' 
 branches:
   only:
