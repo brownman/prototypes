@@ -12,8 +12,8 @@ before_install:
 
 before_script: 
     - sudo add-apt-repository ppa:webupd8team/y-ppa-manager  -y
-      sudo apt-get update 
-      sudo apt-get install yad
+    - sudo apt-get update 
+    -  sudo apt-get install yad
 
 script:       ./present.sh
 after_script: echo goodbye
