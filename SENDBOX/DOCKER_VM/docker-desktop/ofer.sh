@@ -1,12 +1,12 @@
 clear
 set -u
-pushd $(dirname $0) >/dev/null
+pushd `dirname $0`>/dev/null
 
 make_vars(){
 while read line;do
   [ -n "$line" ] || break
 commander  "export $line"
-done <$file_container
+done <$file_container_details
 update_clipboard password $password
 }
 
@@ -36,10 +36,10 @@ get_env(){
 init(){
   echo 'run in detached mode, and expose port 22'
   CONTAINER_ID=$(docker run -d -P $CONTAINER_NAME)
-  echo CONTAINER_ID=$CONTAINER_ID > $file_container
-  echo CONTAINER_NAME=$CONTAINER_NAME > $file_container
-  get_env >> $file_container
-  cat1 $file_container true
+  echo CONTAINER_ID=$CONTAINER_ID > $file_container_details
+  echo CONTAINER_NAME=$CONTAINER_NAME >> $file_container_details
+  get_env >> $file_container_details
+  cat1 $file_container_details true
 }
 
 start(){
@@ -47,16 +47,15 @@ start(){
   echo
 }
 server1(){
-  test -v CONTAINER_ID
-  commander ssh docker@$inet -p $port sh -c './docker-desktop -s 800x600 -d 10'
+ commander  test -v CONTAINER_ID
+#  commander ssh docker@$inet -p $port sh -c './docker-desktop -s 800x600 -d 10'
+ ssh docker@$inet -p $port "sh -c './docker-desktop -s 800x600 -d 10 > /dev/null 2>&1 &'" # Here is where we use the external port
 
 }
 client1(){
-  test -v CONTAINER_ID
+commander   test -v CONTAINER_ID
 #  update_clipboard $password
-local cmd="xpra --ssh='ssh -p $port' attach ssh:docker@${inet}:10"
-echo $cmd
-eval "$cmd"
+xpra --ssh="ssh -p $port" attach ssh:docker@${inet}:10
 }
 
 interactive(){
@@ -97,7 +96,7 @@ kill1(){
 
     local   cmd="docker ps | tail -1 | cut -d' ' -f1"
     local pid=$( eval "$cmd" )
-    commander docker kill $pid && ( rm1 $file_container )
+    commander docker kill $pid && ( rm1 $file_container_details )
     
   else
     print error "docker has no instances currently running"
@@ -105,22 +104,31 @@ kill1(){
   fi
 }
 save1(){
-local num=$( docker ps -l |tail -1 |  cut -d' ' -f1  )
-local container_new=$CONTAINER_NAME${date_ws}${time_ws}
+
+  local max=$( docker ps | wc -l )
+  [ $max -gt 2 ]  && { echo 1>&2 too many instances of docker are running - make sure only 1 instance is running - before try saving - exiting; exit 1; }
+local num=$( docker ps -l | tail -1 |  cut -d' ' -f1  )
+
 time_update
+local name_base=$( echo $CONTAINER_NAME | cut -d'-' -f1 )
+local container_new="$name_base-${date_ws}${time_ws}"
+
 commander docker commit $num $container_new
-echo $container_new > $file_container2
+echo $container_new > $file_container_name
 cowsay "[PUSH COMMIT?] commander docker push $container_new"
 }
 
-file_container=/tmp/container
-file_container_new=./recent
-NAME=brownman
-CONTAINER_NAME=$(cat $file_container_new)
+file_container_details=/tmp/container
+file_container_name=/tmp/container2
+#file_container_details_new=./recent
+#NAME=brownman
+
+set_env
+CONTAINER_NAME=$(cat $file_container_name)
 #$NAME/docker-desktop}
 
 test -v CONTAINER_NAME || { exit 1; }
-set_env
+
 expose_var CONTAINER_NAME
 commander ensure_running
 make_vars
@@ -129,10 +137,10 @@ if [ $# -gt 0 ];then
   commander  $cmd
   #get_env
 else 
-  intro
+intro 2>&1
 fi
 
 #ssh_x11
 #interactive
 
-pop >/dev/null
+popd >/dev/null
