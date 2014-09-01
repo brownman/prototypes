@@ -8,7 +8,7 @@ loop(){
   local delay=${1:-60}
   while :;do
 commander     $builtin_commitment $delay
-breaking
+#breaking
   done
 }
 set_env(){
