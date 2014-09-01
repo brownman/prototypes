@@ -34,6 +34,7 @@ get_env(){
 }
 
 init(){
+  test -v CONTAINER_NAME
   echo 'run in detached mode, and expose port 22'
   CONTAINER_ID=$(docker run -d -P $CONTAINER_NAME)
   echo CONTAINER_ID=$CONTAINER_ID > $file_container_details
@@ -78,7 +79,7 @@ ensure_running(){
   if [ "$num" -eq  1 ];then
     print ok start a new container ?
     read answer
-    if [ $answer = y ];then
+    if [ "$answer" = y ];then
       commander init
     else
       print ok '[skipping]  creating new container '
@@ -105,7 +106,7 @@ kill1(){
 }
 save1(){
 
-  local max=$( docker ps | wc -l )
+  local max=$( docker ps -l | wc -l )
   [ $max -gt 2 ]  && { echo 1>&2 too many instances of docker are running - make sure only 1 instance is running - before try saving - exiting; exit 1; }
 local num=$( docker ps -l | tail -1 |  cut -d' ' -f1  )
 
