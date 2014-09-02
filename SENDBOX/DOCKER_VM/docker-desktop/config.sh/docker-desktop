@@ -1,10 +1,11 @@
 #!/bin/bash
 
+
 #Default screen resolution 800x600
 if [ ! -f ~/.Xscreen ]; then
-	SCREEN_SIZE="800x600"
+  SCREEN_SIZE="800x600"
 else
-   	SCREEN_SIZE=$(head -n 1 ~/.Xscreen)
+  SCREEN_SIZE=$(head -n 1 ~/.Xscreen)
 fi
 
 #Default Display 10
@@ -20,10 +21,10 @@ while getopts ":s:d:h-:" opt; do
       echo "Configuring the screen resolution -> $OPTARG"
       echo -e "-----------------------------------------------\n"
       NEW_SCREEN_SIZE=$OPTARG
-      
+
       if [ "$SCREEN_SIZE" != "$NEW_SCREEN_SIZE" ]; then
         FLAG=1
-	SCREEN_SIZE=$NEW_SCREEN_SIZE
+        SCREEN_SIZE=$NEW_SCREEN_SIZE
       fi
       ;;
     d)
@@ -54,23 +55,31 @@ done
 
 #Saving the screen configuration 
 echo $SCREEN_SIZE > ~/.Xscreen
+func1(){
+  type $FUNCNAME
+  xpra start :$DISPLAY & sleep 5; xpra stop :$DISPLAY & sleep 5; xpra start
+  :$DISPLAY --start-child="Xephyr -ac -screen $SCREEN_SIZE -query localhost
+  -host-cursor -reset -terminate :$DISPLAY_1" --xvfb="Xvfb +extension Composite
+  -screen 0 ${SCREEN_SIZE}x24+32 -nolisten tcp -noreset -auth
+  /home/docker/.Xauthority" & sleep 5 ; DISPLAY=:$DISPLAY_1 fluxbox &
+  DISPLAY=:$DISPLAY_1 rox --pinboard=Default & xterm
 
+}
 # Start the xpra session, if it's not running and attach to it.
 PROCESS_NUM=$(ps -ef | grep "xpra" | grep -v "grep" | wc -l)
 if [ $PROCESS_NUM -eq 0 ] || [ $FLAG  ]; then
-        # Start xpra session
-	DISPLAY_1=$(( $DISPLAY + 1 ))
-
-	xpra start :$DISPLAY & sleep 5; xpra stop :$DISPLAY & sleep 5; xpra start :$DISPLAY --start-child="Xephyr -ac -screen $SCREEN_SIZE -query localhost -host-cursor -reset -terminate :$DISPLAY_1" --xvfb="Xvfb +extension Composite -screen 0 ${SCREEN_SIZE}x24+32 -nolisten tcp -noreset -auth /home/docker/.Xauthority" & sleep 5 ; DISPLAY=:$DISPLAY_1 fluxbox & DISPLAY=:$DISPLAY_1 rox --pinboard=Default &
-	echo -e "\n----------------"
-	echo -e "Session started!"
-	echo -e "----------------\n"
-	echo -e "\n--------------------------------------------------------------------------------"
-	echo -e "Please press Control-C if you are running it directly from the ssh command line."
-	echo -e "--------------------------------------------------------------------------------\n"
+  # Start xpra session
+  DISPLAY_1=$(( $DISPLAY + 1 ))
+  func1
+  echo -e "\n----------------"
+  echo -e "Session started!"
+  echo -e "----------------\n"
+  echo -e "\n--------------------------------------------------------------------------------"
+  echo -e "Please press Control-C if you are running it directly from the ssh command line."
+  echo -e "--------------------------------------------------------------------------------\n"
 else
-        echo -e "------------------------\n"
-        echo -e "Session already running!\n"
-        echo -e "------------------------\n"
+  echo -e "------------------------\n"
+  echo -e "Session already running!\n"
+  echo -e "------------------------\n"
 fi
 
