@@ -28,6 +28,8 @@ install_depend(){
 dir_root=.
 file_list=$dir_root/depend.txt
 test -f $file_list
+
+$dir_root/LIB/install.sh
 install_depend
 install_ppa
 

@@ -1,6 +1,0 @@
-lsdjflksd
-step1
-step1
-docker ps | tail -1 | cut -d' ' -f1
-docker ps | tail -1 | cut -d' ' -f1
-#docker commit $( docker ps -l | cut -d' ' -f1 )
