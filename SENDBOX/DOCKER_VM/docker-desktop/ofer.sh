@@ -3,7 +3,8 @@ clear
 set -u
 #pushd `dirname $0`>/dev/null
 pushd `dirname $0`>/dev/null
-
+#MODE_RUN=detach
+MODE_RUN=interactive
 set_env(){
 
   file_get_container_details=/tmp/container
@@ -198,7 +199,7 @@ steps(){
     read answer
 cat /tmp/images | grep $answer
     CONTAINER_NAME=$answer
-    commander "switch detach"
+    commander "switch $MODE_RUN"
   else      
     CONTAINER_NAME=$( docker ps -l   | awk -F' ' '{ print $2 }' | tail -1 | cut -d':' -f1 )
     commander assert string_has_content $CONTAINER_NAME

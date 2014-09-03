@@ -7,7 +7,7 @@ pushd `dirname $0` >/dev/null
 loop(){
   local delay=${1:-60}
   while :;do
-commander     $builtin_commitment $delay
+commander     $builtin_commitment $delay || exit
 #breaking
   done
 }
