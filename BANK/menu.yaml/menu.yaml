@@ -1,0 +1,38 @@
+main:
+    #SAY_MORE_THANKS:  $dir_library_bank_cfg/LISTS/think_small.sh commitment
+    SELF: gvim $file_menu
+    WORLD: PUBLISH
+    EARTH: pipe_magnify
+    NEXT: MAIN1
+    STORE: $dir_root/STEPPER/SERVICE/MENU/pairs.sh
+    Brightness: render_brightness 0.7
+    screencast: source $builtin_screencast
+    many_cows: COW
+
+COW:
+        cow1: xcowsay hi
+
+POWNDER:
+    THINK_OF_OTHERS: 
+    WISH: gvim $dir_workspace/wish.yaml
+    ROBOT: gvim $dir_workspace/robot.yaml
+
+MAIN1:        
+    WALLPAPER: $dir_library_bank_cfg/LISTS/think_small.sh wallpaper_quote
+    BREAKTHROUGH: $dir_library_bank_cfg/LISTS/think_small.sh commitment
+    TIMING: TIMING
+
+    PUBLISH: PUBLISH
+
+PUBLISH:
+    coverage: gksudo /home/root/.gitbook/start.sh
+    Screencast: $builtin_screencast
+
+LOOPS:
+    practice_time_estimation: gksudo "$dir_library_bank_cfg/LISTS/think_small.sh $dir_rooms/practice_time_estimation.txt" 
+
+TIMING:
+    CALENDAR: google-chrome-stable www.google.com/calendar
+    ORDER: google-chrome-stable http://drichard.org/mindmaps
+
+

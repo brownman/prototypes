@@ -2,6 +2,7 @@ clear
 #set -e
 set -u
 source /tmp/library_proto.cfg
+#init_lib
 pushd `dirname $0` >/dev/null
 
 loop(){

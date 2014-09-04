@@ -1,8 +1,0 @@
-#assertEqual  '`type commander1`' 1
-#$cmd_trap_err
-#$builtin_translate ru dog
-#commander1 pipe_translate dog
-#exiting
-
-
-
