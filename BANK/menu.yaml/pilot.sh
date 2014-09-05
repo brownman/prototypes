@@ -27,7 +27,7 @@ source_pyenv(){
     #test -f $file_python
     #assert file_exist "$file_python"
 #    ls -l $file_python
-    source $file_python
+  commander  source $file_python
     
   #set -u
   commander command shyaml && ( print ok we have shyaml loaded ) || { print error;  exiting ; }
