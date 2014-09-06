@@ -3,22 +3,27 @@ main:
     SELF: gvim $file_menu
     WORLD: PUBLISH
     EARTH: pipe_magnify
-    NEXT: MAIN1
+    NEXT: MAIN
     STORE: $dir_root/STEPPER/SERVICE/MENU/pairs.sh
     Brightness: render_brightness 0.7
     screencast: source $builtin_screencast
     many_cows: COW
     crontab: crontab -e
+    openbox: OPENBOX
+    
+OPENBOX:
+    edit: gvim -f ~/.config/openbox/rc.xml
+    reconfigure: openbox --reconfigure
 
 COW:
-        cow1: xcowsay hi
+    cow1: xcowsay hi
 
 POWNDER:
     THINK_OF_OTHERS: 
     WISH: gvim $dir_workspace/wish.yaml
     ROBOT: gvim $dir_workspace/robot.yaml
 
-MAIN1:        
+MAIN:        
     WALLPAPER: $dir_library_bank_cfg/LISTS/think_small.sh wallpaper_quote
     BREAKTHROUGH: $dir_library_bank_cfg/LISTS/think_small.sh commitment
     TIMING: TIMING

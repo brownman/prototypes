@@ -1,6 +1,6 @@
 #!/bin/bash
 notify-send pilot 
-gvim -f ~/idea.yaml 
+#gvim -f ~/idea.yaml 
 #info:   parse a menu which described in yaml
 #YAML VALIDATOR: http://yamllint.com/
 #shopt -s expand_aliases
@@ -44,6 +44,8 @@ ensure_anchor(){
 }
 
 using(){
+  use ps1
+  use ps4
     use where_am_i
     use dialog_confirm
     use rm1
@@ -117,7 +119,7 @@ menu_subject(){
     fi
 }
 source_lib(){
-    trap trap_err ERR
+    #trap trap_err ERR
     MODE=0
     shopt -s expand_aliases
     }
@@ -222,5 +224,5 @@ else
 fi
 
 cat1 /tmp/err true
-gxmessage -file /tmp/err
+#gxmessage -file /tmp/err
 popd >/dev/null
