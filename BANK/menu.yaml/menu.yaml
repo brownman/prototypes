@@ -8,6 +8,7 @@ main:
     Brightness: render_brightness 0.7
     screencast: source $builtin_screencast
     many_cows: COW
+    crontab: crontab -e
 
 COW:
         cow1: xcowsay hi

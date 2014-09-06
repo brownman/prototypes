@@ -16,7 +16,8 @@ update_commitment(){
   local cmd=""
   export GXMESSAGE='-ontop -sticky -wrap -timeout 10'
   while [ -z "$line" ];do
-    flite1 "next easy mission"
+    flite1 "it is easy for a robot - what do u want to do lazy boy ?"
+    #next easy mission"
     title="Easy For Robot"
     cmd="gxmessage -entrytext \"$line\" -title \"$title\" -file \"$file_done\" $GXMESSAGE"
 
@@ -29,6 +30,7 @@ update_commitment(){
     echo -n '' > $file_done  
     return 0
   else
+      flite -t 'it is easy for me - you are a little monkey'
     local line_new="$time1\t $line"
     file_update "$file_done" "$line_new"
     (    pipe_translate "$line"; )&

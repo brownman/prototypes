@@ -1,9 +1,11 @@
 #!/bin/bash
-
+notify-send pilot 
+gvim -f ~/idea.yaml 
 #info:   parse a menu which described in yaml
 #YAML VALIDATOR: http://yamllint.com/
+#shopt -s expand_aliases
 exec -c
-set -e
+#set -e
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/games
 TERM=xterm
@@ -14,10 +16,9 @@ LOGNAME=paretech
 exec 2> >( tee /tmp/err )
 #set -x
 #set -e
-shopt -s expand_aliases
+#shopt -s expand_aliases
 
 pushd `dirname $0` >/dev/null
-
 source_pyenv(){
  # set +u
  set +o nounset
@@ -27,10 +28,11 @@ source_pyenv(){
     #test -f $file_python
     #assert file_exist "$file_python"
 #    ls -l $file_python
-  commander  source $file_python
-    
+#  commander  source $file_python
+
   #set -u
-  commander command shyaml && ( print ok we have shyaml loaded ) || { print error;  exiting ; }
+#  commander command shyaml && ( print ok we have shyaml loaded ) || { print error;  exiting ; }
+  
 }
 
 ensure_anchor(){
@@ -72,7 +74,7 @@ act_on_list1 ()
 
 test_type(){
     str="$1"
-    trap trap_err ERR
+    #trap trap_err ERR
     #  text="${(type $str):-$(echo $str)}"
     text=$(type $str)
     ( gxmessage "$text" )
@@ -156,16 +158,22 @@ update_env(){
     echo
 }
 set_env(){
-    source /tmp/library.cfg
+
     dir_self=`where_am_i $0`
     file_menu=$dir_self/menu.yaml
-    file_python=$dir_self/PYTHON_ENV/MAKE_ENV/env/bin/activate
+    dir_python=$dir_self/PYTHON_ENV/MAKE_ENV/env/bin/
+#    file_python=$dir_self/PYTHON_ENV/MAKE_ENV/env/bin/activate
+
+    #file_python=$dir_python/python2.7
+    #file_shyaml="$dir_python/shyaml"
+export    PATH=$PATH:$dir_python
+
     source $dir_self/match_name.cfg
 }
 validate_list(){
     assert file_exist $file_menu
     #commander cat1 $file_menu true
-    cat1 $file_menu true
+    echo cat1 $file_menu true
 }
 intro(){
     xcowsay pilot &
@@ -187,10 +195,12 @@ steps(){
 
 
 
-
-    set_env
+    source /tmp/library.cfg
 
     using
+    set_env
+
+
 
     ensure_anchor
     validate_list
@@ -212,4 +222,5 @@ else
 fi
 
 cat1 /tmp/err true
+gxmessage -file /tmp/err
 popd >/dev/null
