@@ -1,4 +1,4 @@
-start: wmctrl -a certExam
+start: wmctrl -a certExam || thunar
 hotkey: wmctrl -a chrome
 #wmctrl -a mindmap || ( google-chrome-stable 'http://drichard.org/mindmaps/' )
-end: xcowsay finish  
+end: xcowsay 'finish certexam '

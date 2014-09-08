@@ -28,6 +28,6 @@ if [ -f $file ];then
   fi
 else
   xcowsay "[file] not found: $file";
-  /tmp/service.sh crontab
+#  /tmp/service.sh crontab
 fi
 

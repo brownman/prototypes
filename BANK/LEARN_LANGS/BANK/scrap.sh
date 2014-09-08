@@ -5,37 +5,36 @@
 
 scrap_page(){
 
-  let num=${1:-1}
-  let lang_to=${2:-RU}
-
   use commander
   use print
   use expose_var
   print func
-  #use figlet1
-set -u
-$cmd_trap_err
-  
 
-  
+set -u
+#depend xmlint
+
+  local lang_to=${1:-RU}
+
+  local num=${2:-1}
+ 
   let 'num+=2'
   #    local str_num=$( str_num_get $num )
 
   local str_num=$( string_change $num )
+
   local filename_html="EN${lang_to}${str_num}.HTM"
 
   expose_var filename_html
 
-  confirm
   local url="http://www.goethe-verlag.com/book2/EN/EN${lang_to}/${filename_html}"
-  echo commander "$BROWSER $url"
-  confirm
+  use update_clipboard
+update_clipboard 'website: learn_langs' "$BROWSER $url"
   # assert network_alive
   #(    assert url_alive "$url" ) 
   #res=$?
   #$res && ( commander "wget -P /tmp \"$url\"" ) || ( gxmessage2 "$BROWSER $url" )
-  commander "wget -P /tmp \"$url\""
-  commander  xmllint --html /tmp/$filename_html
+  commander wget -P /tmp $url
+echo   commander  xmllint --html /tmp/$filename_html
 
   return
   res=$?

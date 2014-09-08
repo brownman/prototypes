@@ -24,7 +24,7 @@ source $dir_BANK/user.conf
 run(){
 
 set -u
-$dir_BANK/scrap.sh
+$dir_BANK/scrap.sh HI 3
 }
 set_env
 run

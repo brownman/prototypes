@@ -1,6 +1,12 @@
+
 main:
     #SAY_MORE_THANKS:  $dir_library_bank_cfg/LISTS/think_small.sh commitment
     SELF: gvim $file_menu
+    openbox: OPENBOX
+    hotkey_run: /tmp/hotkey.sh run
+    hotkey_edit: gvim /tmp/hotkey.sh edit 
+
+old:
     WORLD: PUBLISH
     EARTH: pipe_magnify
     NEXT: MAIN
@@ -9,7 +15,7 @@ main:
     screencast: source $builtin_screencast
     many_cows: COW
     crontab: crontab -e
-    openbox: OPENBOX
+
     
 OPENBOX:
     edit: gvim -f ~/.config/openbox/rc.xml

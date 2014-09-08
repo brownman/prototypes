@@ -7,11 +7,13 @@ clear
 set -o nounset
 #set -e
 exec 2> >(tee /tmp/err)
+source /tmp/library.cfg
+
 intro(){
   print func
   print color 33 'assuming: alt+F1: triggers /tmp/hotkey.sh run '
   print color 34 'alt+F2: triggers: /tmp/hotkey.sh edit'
-  sleep 4
+  #sleep 4
 }
 
 
@@ -20,6 +22,8 @@ update_handler_for_hotkey(){
   local file="$1"
   commander rm1 /tmp/hotkey.txt
   commander ln -s $file /tmp/hotkey.txt
+
+dialog_optional_edit $file
   #print ok 'DONE !'
 }
 
@@ -79,6 +83,7 @@ parse_line(){
   local str_res=$( eval "$cmd" )
   #print color 33 "$str_res"
   echo $str_res
+ # eval "$str_res"
 }
 
 task(){
@@ -86,7 +91,8 @@ task(){
   local file="$1"
   local tag="$2"
   local   cmd=$(parse_line $file $tag )
-  commander $cmd
+  echo 1>&2 $cmd
+  commander "$cmd"  &
 }
 
 init_task(){
@@ -103,7 +109,7 @@ init_task(){
   assert file_exist $file || ( gvim -f $file )
 
   cat1 $file true
-  sleep 5
+  #sleep 5
  update_handler_for_hotkey $file 
 
 
@@ -112,25 +118,31 @@ init_task(){
   task $file end
 }
 
-loop(){
-dialog_optional_edit_file $file_list
+single(){
+dialog_optional_edit $file_list
   while read line;do
     [ -z "$line" ] && { breaking; }
     commander  init_task $line
   done< $file_list
 }
 validate_symlinks(){
-  trap trap_err_service ERR
+#  trap trap_err_service ERR
 
   #anchors
-  rm1 /tmp/hotkey.sh
-  ln -s $file_hotkey /tmp/hotkey.sh
-  rm1 /tmp/service.sh
-  ln -s $file_self /tmp/service.sh
+  #rm1 /tmp/hotkey.sh
+  test $file_hotkey -ef /tmp/hotkey.sh || (   rm1 /tmp/hotkey.sh; ln -s $file_hotkey /tmp/hotkey.sh
+  )
+  #rm1 /tmp/service.sh
+  #ln -s $file_self /tmp/service.sh
 
 
 }
-
+loop(){
+while :;do
+  single 
+  sleep 5
+done
+}
 #validate
 #assert file_exist $file_hotkey
 steps(){
@@ -138,7 +150,8 @@ steps(){
   myself
   intro
   validate_symlinks
-  loop
+#  loop
+single
 }
 
 #pushd $dir_self >/dev/null

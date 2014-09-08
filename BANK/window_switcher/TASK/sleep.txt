@@ -1,1 +1,2 @@
-xcowsay sleeping
+start: xcowsay 'sleeping start'
+finish: xcowsay 'sleeping end'
