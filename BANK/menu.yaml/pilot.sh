@@ -57,6 +57,7 @@ using(){
     use cat1
     use dialog_menu
     use who_am_i
+    use vars
 
 }
 broadcast1(){

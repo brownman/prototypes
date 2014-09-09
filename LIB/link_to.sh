@@ -6,9 +6,13 @@ set_env(){
   use print
   use commander
 }
-
 help1(){
   print color 33 supply a folder for linking BANK to;  
+  ls  $dir_library 
+  ls READONLY
+
+  commander ls -l  BANK
+
 }
 
 steps(){
@@ -26,7 +30,6 @@ else
   steps
 fi
 
-commander ls -l BANK
 
 
 
