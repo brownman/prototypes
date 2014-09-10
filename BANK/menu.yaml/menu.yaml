@@ -1,13 +1,25 @@
-
 main:
-    url: $dir_root/pairs.sh
+    edit_menu: gvim $file_menu
+    single: xcowsay single
+    many: COWS
+#    cow: xcowsay hi
+#    many: COWS
+#    cow_single: xcowsay single 
+#    cow_many: COWS
     
-    #SAY_MORE_THANKS:  $dir_library_bank_cfg/LISTS/think_small.sh commitment
-    SELF: gvim $file_menu
+      
+COWS:
+  say_hi: xcowsay hi
+  say_bye: xcowsay bye
+      
+
+more:
+    url: $dir_root/pairs.sh
     openbox: OPENBOX
-    hotkey_run: /tmp/hotkey.sh run
-    hotkey_edit: gvim /tmp/hotkey.sh edit 
     timming: TIMING
+    say_hi: xcowsay 'hello world' 
+
+    #SAY_MORE_THANKS:  $dir_library_bank_cfg/LISTS/think_small.sh commitment
 
 old:
     WORLD: PUBLISH
@@ -23,6 +35,9 @@ old:
 OPENBOX:
     edit: gvim -f ~/.config/openbox/rc.xml
     reconfigure: openbox --reconfigure
+    hotkey_run: /tmp/hotkey.sh run
+    hotkey_edit: gvim /tmp/hotkey.sh edit 
+
 
 COW:
     cow1: xcowsay hi

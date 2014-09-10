@@ -115,7 +115,7 @@ menu_subject(){
         else
             echo "$str"
             local cmd_final=$( eval echo "$str" )
-            dialog_confirm  "$cmd_final"
+            commander "$cmd_final"
         fi
     fi
 }
