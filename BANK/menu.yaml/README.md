@@ -16,4 +16,5 @@ recommended:
 
 Demo
 ==
-![demo](./DEMO/run.gif)
+![demo menu.yaml](./DEMO/run.gif)
+![demo bookmarks](./DEMO/run_pairs.gif)

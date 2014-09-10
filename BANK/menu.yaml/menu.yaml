@@ -2,6 +2,7 @@ main:
     edit_menu: gvim $file_menu
     single: xcowsay single
     many: COWS
+    urls: ./pairs.sh
 #    cow: xcowsay hi
 #    many: COWS
 #    cow_single: xcowsay single 
