@@ -1,12 +1,30 @@
 main:
-    edit_menu: gvim $file_menu
-    single: xcowsay single
-    many: COWS
-    urls: ./pairs.sh
+    SELF: gvim -f $file_menu; $0
+    TIME_ESTIMATION: gvim ~/possible.yaml
+    SAVE: ./pairs.sh
+    vids: VIDS
+    lpi: LPI
+    recent: $(dialog_menu_multiple /tmp/optional.txt)
+    
+    
+LPI:
+  learn_bash: thunar /tmp/dir_root/ASSETS/LEARN_BASH 
+  vce: thunar $HOME/Downloads/VCE
+
+
+VIDS:
+    ccna: thunar $HOME/Downloads/CCNA*
+    python: thunar $HOME/Downloads/security*
+    
+
 #    cow: xcowsay hi
 #    many: COWS
 #    cow_single: xcowsay single 
 #    cow_many: COWS
+#    
+#       single: xcowsay single
+#many: COWS
+
     
       
 COWS:
