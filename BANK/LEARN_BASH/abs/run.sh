@@ -21,7 +21,7 @@ local str=$( dialog_menu_echo $file_list )
 local res=$?
 echo $str
 echo $res
-local file="$dir_self/BANK/$str"
+local file="$dir_self/.BANK/$str"
 local cmd="gvim $file"
 #confirm_gui "$cmd"
 use dialog_confirm 
