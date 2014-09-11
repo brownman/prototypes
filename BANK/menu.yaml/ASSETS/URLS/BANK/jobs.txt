@@ -1,0 +1,4 @@
+#parser: google-chrome-stable
+http://www.alljobs.co.il/SearchResultsGuest.aspx?page=1&position=1231&type=&region=2,8&city=&freetxt=devops
+http://www.jobmaster.co.il/code/check/search.asp?key=bash
+http://www.jobmaster.co.il/code/check/search.asp?key=devops

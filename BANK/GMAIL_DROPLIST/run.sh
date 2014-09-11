@@ -2,17 +2,17 @@
 #url.yad-examples: http://code.google.com/p/yad/wiki/Examples
 #url.mail sending: http://www.cyberciti.biz/tips/linux-use-gmail-as-a-smarthost.html
 #depend_package: xcowsay fortune
-reset
 
 set -o nounset
 
 source /tmp/library.cfg
+use where_am_i
 use print
 
 print ok HELLO
 
 set_env(){
-  export dir_self=`pwd`
+  export dir_self=$( where_am_i $0 )
 }
 
 sourcing(){

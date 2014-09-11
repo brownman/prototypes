@@ -1,0 +1,5 @@
+#parser: detect
+http://crunchbang.org/forums/viewtopic.php?id=4538
+http://linuxinside.blogspot.co.il/2008/03/openbox-introductioncustomization.html
+echo hi
+

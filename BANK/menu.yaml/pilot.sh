@@ -3,38 +3,26 @@ notify-send pilot
 #gvim -f ~/idea.yaml 
 #info:   parse a menu which described in yaml
 #YAML VALIDATOR: http://yamllint.com/
-#shopt -s expand_aliases
 exec -c
 #set -e
+
+exec 2> >( tee /tmp/err )
+
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/games
 TERM=xterm
 DISPLAY=:0 
-LOGNAME=paretech
-#
 
-exec 2> >( tee /tmp/err )
+source /tmp/library.cfg
+export dir_PROTOTYPES=/tmp/dir_root/SCRIPT/PROTOTYPES/BANK
+export dir_LEARN_BASH=$dir_PROTOTYPES/LEARN_BASH
+
+
 #set -x
 #set -e
 #shopt -s expand_aliases
 
-pushd `dirname $0` >/dev/null
-source_pyenv(){
-  # set +u
-  set +o nounset
-  set -o | grep nounset
-  #exiting 
-
-  #test -f $file_python
-  #assert file_exist "$file_python"
-  #    ls -l $file_python
-  #  commander  source $file_python
-
-  #set -u
-  #  commander command shyaml && ( print ok we have shyaml loaded ) || { print error;  exiting ; }
-
-}
-
+#pushd `dirname $0` >/dev/null
 ensure_anchor(){
   file_self=$(who_am_i $0 )
   if [ ! /tmp/pilot.sh -ef "$file_self" ];then
@@ -74,13 +62,7 @@ act_on_list1 ()
   done < $file
 }
 
-test_type(){
-  str="$1"
-  #trap trap_err ERR
-  #  text="${(type $str):-$(echo $str)}"
-  text=$(type $str)
-  ( gxmessage "$text" )
-}
+
 
 
 menu_subject(){
@@ -123,11 +105,6 @@ eval "$str" &
     fi
   fi
 }
-source_lib(){
-  #trap trap_err ERR
-  MODE=0
-  shopt -s expand_aliases
-}
 
 trap_err(){
   broadcast1 trap err
@@ -165,21 +142,16 @@ update_env(){
   echo
 }
 set_env(){
-
-  dir_self=`where_am_i $0`
+  dir_self=$(where_am_i $0)
   file_menu=$dir_self/menu.yaml
-  dir_python=$dir_self/PYTHON_ENV/MAKE_ENV/env/bin/
-  #    file_python=$dir_self/PYTHON_ENV/MAKE_ENV/env/bin/activate
-
-  #file_python=$dir_python/python2.7
-  #file_shyaml="$dir_python/shyaml"
-  export    PATH=$PATH:$dir_python
-
+  dir_shyaml=$dir_self/shyaml
+  #PYTHON_ENV/MAKE_ENV/env/bin/
+  export    PATH=$PATH:$dir_shyaml
   source $dir_self/match_name.cfg
+  export dir_gist=SCRIPT/LIBRARY/BANK/GIST
 }
 validate_list(){
   assert file_exist $file_menu
-  #commander cat1 $file_menu true
   echo cat1 $file_menu true
 }
 intro(){
@@ -196,28 +168,10 @@ validate_no_errors(){
 }
 
 steps(){
-  #rm1 /tmp/err
-  #rm1 /tmp/out_long
-  #source libs
-
-
-
-  source /tmp/library.cfg
-
   using
   set_env
-
-
-
-  ensure_anchor
   validate_list
-
-
-  source_pyenv
-  #intro
-  #detect: user is cron/hotkey/shell
   menu_subject main
-
 }
 
 MODE_CONFIRM=false
@@ -230,4 +184,4 @@ fi
 
 cat1 /tmp/err true
 #gxmessage -file /tmp/err
-popd >/dev/null
+#popd >/dev/null

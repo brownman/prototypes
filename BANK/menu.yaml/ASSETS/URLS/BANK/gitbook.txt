@@ -1,0 +1,5 @@
+https://github.com/GitbookIO/editor
+https://github.com/brownman/do_for_others_first
+http://brownman.github.io/do_for_others_first_gitbook/
+bash /home/root/.gitbook/start.sh
+update_clipboard /home/paretech/Downloads/do_for_others_first/BANK/LIBRARY/BANK/CFG/GITBOOK

@@ -1,17 +1,27 @@
 main:
     SELF: gvim -f $file_menu; $0
-    TIME_ESTIMATION: gvim ~/possible.yaml
-    SAVE: ./pairs.sh
+    collect_network_scripts: google-chrome-stable http://www.commandlinefu.com/
+    screencast: use_sh screencast; $builtin_screencast
     vids: VIDS
-    lpi: LPI
+    editing: EDIT
+    vce: thunar $HOME/Downloads/VCE
+    riddle: BASH
+    talk_to: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
+        
+BASH:
+    bashism: $( $dir_LEARN_BASH/bashism/run.sh )
+    common_mistake: $( $dir_LEARN_BASH/common_mistake/run.sh )
+    abs: $( $dir_LEARN_BASH/abs/run.sh )
+    lessons: $( $dir_LEARN_BASH/lessons/run.sh )
+
+EDIT:
     recent: $(dialog_menu_multiple /tmp/optional.txt)
+    bookmark: $dir_self/pairs.sh
+    breakthrough: gvim ~/possible.yaml
+    library: gvim /tmp/library.cfg
+    pilot.sh: gvim $0
     
     
-LPI:
-  learn_bash: thunar /tmp/dir_root/ASSETS/LEARN_BASH 
-  vce: thunar $HOME/Downloads/VCE
-
-
 VIDS:
     ccna: thunar $HOME/Downloads/CCNA*
     python: thunar $HOME/Downloads/security*
@@ -46,13 +56,14 @@ old:
     NEXT: MAIN
 
     Brightness: render_brightness 0.7
-    screencast: source $builtin_screencast
+
     many_cows: COW
     crontab: crontab -e
 
     
 OPENBOX:
     edit: gvim -f ~/.config/openbox/rc.xml
+    coverage: gksudo /home/root/.gitbook/start.sh
     reconfigure: openbox --reconfigure
     hotkey_run: /tmp/hotkey.sh run
     hotkey_edit: gvim /tmp/hotkey.sh edit 
@@ -71,10 +82,10 @@ MAIN:
     BREAKTHROUGH: $dir_library_bank_cfg/LISTS/think_small.sh commitment
     TIMING: TIMING
 
-    PUBLISH: PUBLISH
+
 
 PUBLISH:
-    coverage: gksudo /home/root/.gitbook/start.sh
+
     Screencast: $builtin_screencast
 
 LOOPS:

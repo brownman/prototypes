@@ -1,0 +1,3 @@
+#parser: google-chrome-stabe www.google.com/$str
+alternativo scheduler
+android archilnux

@@ -1,0 +1,12 @@
+jobs
+android
+bip
+gitbook
+wallpaper_per_desktop
+ideas
+openbox
+query
+TODO
+torrent
+troobleshoot
+wishes

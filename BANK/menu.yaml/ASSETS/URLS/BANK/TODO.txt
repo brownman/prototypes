@@ -1,0 +1,12 @@
+suspension is working?
+f1 is working with suspension ?
+suspension is working with learn langs ?
+
+
+work with $dir_workspace  -  count the progress
+use MODULES: m.t.s2
+use MODULES: main menu
+use MODULES: random_life_step
+
+create Git book
+start android hello world - archlinux

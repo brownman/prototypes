@@ -2,6 +2,9 @@
 reset
 #exec 2>/tmp/err
 #set -e
+
+exec -c
+set -e
 source /tmp/library.cfg
 
 set -o nounset
@@ -17,6 +20,8 @@ use open_with
 $cmd_trap_err
 $cmd_trap_exit
 echo Main Menu for PAIRS
+notify-send pairs &
+
 set_env(){
   dir_self=`where_am_i $0`
   dir_assets=$dir_root/ASSETS #todo: remove me
