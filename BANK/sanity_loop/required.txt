@@ -11,6 +11,5 @@ commitment sh
 file_update
 indicator
 trace
-rm1
-cat1
+ensure
 breaking

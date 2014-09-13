@@ -1,1 +1,3 @@
-wmctrl -a mind || ( google-chrom-stable mindmap )
+start: wmctrl CCNA || thunar $HOME/Downloads/CCNA*
+finish: xcowsay finish ccna
+#wmctrl -a mind || ( google-chrom-stable mindmap )

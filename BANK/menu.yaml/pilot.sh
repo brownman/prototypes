@@ -3,10 +3,11 @@ notify-send pilot
 #gvim -f ~/idea.yaml 
 #info:   parse a menu which described in yaml
 #YAML VALIDATOR: http://yamllint.com/
-exec -c
+#exec -c
 #set -e
-
-exec 2> >( tee /tmp/err )
+#set -e
+exec 2> >( tee /tmp/err >&2)
+  exec 1> >( tee  /tmp/out_long )
 
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/games
@@ -14,6 +15,8 @@ TERM=xterm
 DISPLAY=:0 
 
 source /tmp/library.cfg
+#$cmd_trap_err
+#$cmd_trap_exit
 export dir_PROTOTYPES=/tmp/dir_root/SCRIPT/PROTOTYPES/BANK
 export dir_LEARN_BASH=$dir_PROTOTYPES/LEARN_BASH
 
@@ -136,15 +139,10 @@ parse_record(){
   #> /tmp/subject
 }
 
-update_env(){
-  exec 2> >( tee -a /tmp/err )
-  exec 1> >( tee -a /tmp/out_long )
-  echo
-}
 set_env(){
-  dir_self=$(where_am_i $0)
-  file_menu=$dir_self/menu.yaml
-  dir_shyaml=$dir_self/shyaml
+  export dir_self=$(where_am_i $0)
+  export file_menu=$dir_self/menu.yaml
+  export dir_shyaml=$dir_self/shyaml
   #PYTHON_ENV/MAKE_ENV/env/bin/
   export    PATH=$PATH:$dir_shyaml
   source $dir_self/match_name.cfg
@@ -172,6 +170,7 @@ steps(){
   set_env
   validate_list
   menu_subject main
+#  validate_no_errors
 }
 
 MODE_CONFIRM=false

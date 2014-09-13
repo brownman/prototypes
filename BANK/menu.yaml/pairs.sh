@@ -1,10 +1,8 @@
 #info: a suggested replacement for the well-known(+not efficient) browser bookmark manager
-reset
 #exec 2>/tmp/err
 #set -e
 
 exec -c
-set -e
 source /tmp/library.cfg
 
 set -o nounset
@@ -15,6 +13,7 @@ use dialog_dropdown
 use commander
 use dialog_menu
 use open_with
+use cat1
 
 #set -x
 $cmd_trap_err
@@ -24,7 +23,7 @@ notify-send pairs &
 
 set_env(){
   dir_self=`where_am_i $0`
-  dir_assets=$dir_root/ASSETS #todo: remove me
+  dir_assets=$dir_self/ASSETS #todo: remove me
   dir=$dir_assets/URLS/BANK
 }
 ls_dir(){
@@ -45,7 +44,7 @@ choose_subject(){
 extract_file(){
   file_target="$dir/${str_res}.txt"
   if [ -f $file_target ];then
-    file_present $file_target
+    cat1 $file_target true
   else
     gvim $file_target 
     exiting
@@ -83,6 +82,5 @@ steps
 #menu /tmp/list_tmp
 #cat -n /tmp/list_tmp
 #file_list=/tmp/list_tmp
-#file_present $file_list
 
 

@@ -8,6 +8,7 @@ set -o nounset
 #set -e
 exec 2> >(tee /tmp/err)
 source /tmp/library.cfg
+pid  switcher lock
 
 intro(){
   print func
@@ -23,7 +24,7 @@ update_handler_for_hotkey(){
   commander rm1 /tmp/hotkey.txt
   commander ln -s $file /tmp/hotkey.txt
 
-dialog_optional_edit $file
+  dialog_optional_edit $file
   #print ok 'DONE !'
 }
 
@@ -44,6 +45,8 @@ testing(){
 }
 
 set_env(){
+
+
   #source /tmp/library.cfg
 
   #USE
@@ -69,6 +72,8 @@ myself(){
 
   #EXPORT
   export dir_self="$dir_self"
+
+  export file_sample="$dir_self/TASK/.sample.txt"
   export file_hotkey=$dir_self/SH/hotkey.sh 
 
 }
@@ -83,7 +88,7 @@ parse_line(){
   local str_res=$( eval "$cmd" )
   #print color 33 "$str_res"
   echo $str_res
- # eval "$str_res"
+  # eval "$str_res"
 }
 
 task(){
@@ -106,27 +111,33 @@ init_task(){
 
   #figure it out
   local file="$dir_self/TASK/${task_name}.txt"
-  assert file_exist $file || ( gvim -f $file )
+  local cmd_sleep="dialog_sleep '$delay' '$task_name'"
+  ( assert file_exist $file )  || ( cp $file_sample $file; gvim -f $file )
 
   cat1 $file true
   #sleep 5
- update_handler_for_hotkey $file 
+  #  update_handler_for_hotkey $file 
+
 
 
   task $file start
-  dialog_sleep "$delay" "$task_name"
+  while :;do
+    dialog_optional contine? && ( $cmd_sleep )   || break 
+  done
+
   task $file end
 }
 
 single(){
-dialog_optional_edit $file_list
+
+  dialog_optional_edit $file_list
   while read line;do
     [ -z "$line" ] && { breaking; }
     commander  init_task $line
   done< $file_list
 }
 validate_symlinks(){
-#  trap trap_err_service ERR
+  #  trap trap_err_service ERR
 
   #anchors
   #rm1 /tmp/hotkey.sh
@@ -138,10 +149,19 @@ validate_symlinks(){
 
 }
 loop(){
-while :;do
-  single 
-  sleep 5
-done
+
+  let counter=1
+
+
+  while :;do
+    xcowsay "wow!"
+    sleep .1
+    xcowsay "round: $counter" 
+    dialog_optional contine?  || break 
+    let counter+=1
+    single 
+    sleep 5
+  done
 }
 #validate
 #assert file_exist $file_hotkey
@@ -149,11 +169,15 @@ steps(){
   set_env
   myself
   intro
-  validate_symlinks
-#  loop
-single
+  #validate_symlinks
+  #  loop
+  #single
+  loop
 }
 
 #pushd $dir_self >/dev/null
-testing && steps
+steps
 #popd >/dev/null
+
+
+pid  switcher unlock

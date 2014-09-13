@@ -1,13 +1,40 @@
 main:
     SELF: gvim -f $file_menu; $0
-    collect_network_scripts: google-chrome-stable http://www.commandlinefu.com/
-    screencast: use_sh screencast; $builtin_screencast
-    vids: VIDS
-    editing: EDIT
-    vce: thunar $HOME/Downloads/VCE
-    riddle: BASH
+    many: MANY
+    plan: $HOME/.gitbook/start.sh
+    window_switcher: /tmp/service.sh certExam
+    wish: gvim ~/possible.yaml
+        #window_switcher
+
+MANY:
+    mindmap: MINDMAP
+    record: use_sh screencast; $builtin_screencast
     talk_to: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
-        
+    edit: EDIT
+    timing: TIMING
+    wallpaper: /tmp/service.sh wallpaper
+    system: SYSTEM
+
+
+
+SYSTEM:
+    render_rgb:  $HOME/Desktop/display_only_rgb.sh
+    render_dual:  $HOME/Desktop/display_both.sh 
+
+
+
+
+MINDMAP:
+    vce: wmctrl -a certexam || thunar $HOME/Downloads/VCE
+    exam_next: evince $HOME/Desktop/lpi001-exam.pdf
+    book1:  evince $HOME/Desktop/LPIC1.pdf
+    book2:  evince $HOME/Desktop/LPIC2.pdf
+    vids: VIDS
+    collect_network_scripts: google-chrome-stable http://www.commandlinefu.com/
+    riddle: BASH
+    mindmap_website: wmctrl -a mindmap || ( google-chrome-stable 'http://drichard.org/mindmaps/' )
+
+
 BASH:
     bashism: $( $dir_LEARN_BASH/bashism/run.sh )
     common_mistake: $( $dir_LEARN_BASH/common_mistake/run.sh )
@@ -15,11 +42,13 @@ BASH:
     lessons: $( $dir_LEARN_BASH/lessons/run.sh )
 
 EDIT:
-    recent: $(dialog_menu_multiple /tmp/optional.txt)
+    service: gvim /tmp/dir_root/SCRIPT/SERVICE
+    openbox: OPENBOX
+    recent: $(dialog_menu_multiple /tmp/recent.txt)
     bookmark: $dir_self/pairs.sh
-    breakthrough: gvim ~/possible.yaml
     library: gvim /tmp/library.cfg
     pilot.sh: gvim $0
+    root: gvim /tmp/dir_root
     
     
 VIDS:
@@ -63,7 +92,7 @@ old:
     
 OPENBOX:
     edit: gvim -f ~/.config/openbox/rc.xml
-    coverage: gksudo /home/root/.gitbook/start.sh
+
     reconfigure: openbox --reconfigure
     hotkey_run: /tmp/hotkey.sh run
     hotkey_edit: gvim /tmp/hotkey.sh edit 
@@ -94,5 +123,9 @@ LOOPS:
 TIMING:
     CALENDAR: google-chrome-stable www.google.com/calendar
     ORDER: google-chrome-stable http://drichard.org/mindmaps
+    crontab: crontab -e
+
+
+
 
 

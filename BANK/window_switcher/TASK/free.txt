@@ -1,0 +1,2 @@
+start: xcowsay start
+finish: xcowsay finish 

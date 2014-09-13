@@ -1,7 +1,7 @@
 clear
 #set -e
 set -u
-source /tmp/library_proto.cfg
+source /tmp/library.cfg
 #init_lib
 pushd `dirname $0` >/dev/null
 
@@ -42,5 +42,5 @@ validate_file_lang(){
 use commander
 set_env
 validate_file_lang
-testing && loop ${@:-}
+loop ${@:-}
 popd >/dev/null

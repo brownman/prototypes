@@ -1,7 +1,7 @@
 source /tmp/library.cfg
 use commander
 use print
-use mkdir1
+use ensure
 use assert
 
 trap 'echo ERROR; caller;exit' ERR
