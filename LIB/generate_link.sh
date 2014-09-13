@@ -1,4 +1,6 @@
 set -u
+set -e
+
 clear
 #dir_root=$PWD
 #echo dir_root: $dir_root
@@ -14,7 +16,8 @@ set_env(){
 
 
 single(){
-  file=$( commander finder "$str1" "$str2"  )
+local   file=$( commander finder "$str1" "$str2"  )
+commander  assert file_exist "$file"
   res=$?
   if [ $res -eq 0  ];then
     #if [ -n "$file" ];then
@@ -40,8 +43,10 @@ single(){
     fi
   fi
 }
+set_env 
 str1="$1"
 str2="${2:-cfg}"
-single "$str1" "$str2"
+commander single 
+#"$str1" "$str2"
 
 

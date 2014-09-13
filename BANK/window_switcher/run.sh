@@ -8,7 +8,7 @@ set -o nounset
 #set -e
 exec 2> >(tee /tmp/err)
 source /tmp/library.cfg
-pid  switcher lock
+#pid  switcher lock
 
 intro(){
   print func
@@ -180,4 +180,4 @@ steps
 #popd >/dev/null
 
 
-pid  switcher unlock
+#pid  switcher unlock
