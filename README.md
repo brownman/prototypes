@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/brownman/prototypes.svg?branch=develop)](https://travis-ci.org/brownman/prototypes)
+
+
 PROTOTYPES:
 ===
 
@@ -6,4 +9,3 @@ PROTOTYPES:
 
 [documentation]( http://brownman.github.io/do_for_others_first_gitbook/my_products/README.html )
 
-[![Build Status](https://travis-ci.org/brownman/prototypes.svg?branch=develop)](https://travis-ci.org/brownman/prototypes)
