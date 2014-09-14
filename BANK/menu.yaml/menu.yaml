@@ -4,6 +4,8 @@ main:
     plan: $HOME/.gitbook/start.sh
     window_switcher: /tmp/service.sh certExam
     wish: gvim ~/possible.yaml
+    wmctrl:   dialog_confirm switch_to 'wmctrl -a ' 
+    
         #window_switcher
 
 MANY:
