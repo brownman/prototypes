@@ -6,7 +6,7 @@ PROTOTYPES:
 
 ##### install the library:
 - run the library installer: LIB/install.sh
-- 
+
 ##### run 1 prototype:
 - check out a prototype by running its: ./run.sh 
 
