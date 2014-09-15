@@ -1,14 +1,20 @@
 main:
+    genius: GENIUS 
     SELF: gvim -f $file_menu; $0
     many: MANY
+    riddle: $( $dir_LEARN_BASH/run.sh )
+    
+GENIUS:
+    run: /tmp/dir_root/GENIUS.sh
+    edit: gvim /tmp/dir_root/GENIUS.sh
+
+        #window_switcher
+
+MANY:
     plan: $HOME/.gitbook/start.sh
     window_switcher: /tmp/service.sh certExam
     wish: gvim ~/possible.yaml
     wmctrl:   dialog_confirm switch_to 'wmctrl -a ' 
-    
-        #window_switcher
-
-MANY:
     mindmap: MINDMAP
     record: use_sh screencast; $builtin_screencast
     talk_to: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
