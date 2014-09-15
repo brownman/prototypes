@@ -6,28 +6,43 @@
 set -o nounset
 
 source /tmp/library.cfg
+use vars
 use where_am_i
 use print
+use    str_to_arr
+use commander
+use dialog_confirm
+use exiting
+#use print_dialog
 
-print ok HELLO
+ensure_settings(){
+  local file=$file_settings
+  if [ -f $file ];then
+    #gvim $file
+    source $file ;
+  else
+    xcowsay 'create new settings file'
+    cat > $file << FILE
+export BASHRC_PASSWORD=password
+export BASHRC_USER=usename
+FILE
+    commander "$EDITOR $file"
+    print error update the gmail settings; 
+    exiting; 
+  fi
 
-set_env(){
-  export dir_self=$( where_am_i $0 )
+  commander source $file_param
 }
 
-sourcing(){
-  ### helper funcs
-  use    str_to_arr
-  source CFG/file_to_str.cfg
-  source CFG/print_dialog.cfg
-  source CFG/arr_print.cfg
-  ### private params
-  print ok "[LOADING PRIVATE PARAMS]"
-  source $dir_conf/vars.conf
-
+more_sourcing(){
+  source $dir_self/CFG/file_to_str.cfg
+  source $dir_self/CFG/print_dialog.cfg
+  source $dir_self/CFG/arr_print.cfg
 }
 exporting(){
+  export dir_self=$( where_am_i $0 )
   export file_script=$dir_self/SH/gmail.sh
+  export file_settings=$HOME/gmail.conf 
   export dir_txt=$dir_self/TXT
   export dir_cfg=$dir_self/CFG
   export dir_log=$dir_self/LOG
@@ -37,13 +52,9 @@ exporting(){
   export file_to=$dir_txt/to.txt
   export file_from=$dir_txt/from.txt
   export file_param=$dir_conf/vars.conf
-  ######extensions:
-  #monkey
-  #translate
 }
 
 act(){
-
   export arr=()
   str=`print_dialog`
   res=$?
@@ -52,12 +63,8 @@ act(){
     1)
       echo "[Good bye]"
       ;;
-    3)
-      str=`            cat $dir_txt/talk_to.txt`
-      xcowsay "$str"
-      ;;
     2)
-      $dir_ext/print_monkey.sh 
+      gvim $dir_self
       ;;
     0)
       echo $str
@@ -66,40 +73,22 @@ act(){
 
       str_to_arr "$str"
       echo "${#arr[@]}"
-      #    ( set -e; show_args  )
-      #arr_print > /tmp/arr
-      #cat -n /tmp/arr
-      arr_print
-      # local str_res=$(   show_args  )
-      # local num_res=$?
-      # echo
-      #echo "[RESULTS]"
-      #echo "$str_res"
-      #echo "$num_res"
-
+      commander arr_print
       local cmd="$file_script ${arr[@]}"
-      #( trap trap_err ERR;  "$cmd")
-
-      echo  "[cmd] $cmd"
-      #  trap trap_err ERR;
-      eval  "$cmd" 
+#      echo  "[cmd] $cmd"
+#      eval "$cmd" 
+      commander $cmd
       ;;
     *)
       echo "[skipping] un-known code"
       ;;
   esac 
-  #show_args 
-}
-reminder(){
-  echo "[YAD EXAMPLES]"
-  echo http://code.google.com/p/yad/source/browse/wiki/#wiki
 }
 steps(){
-  set_env
   exporting
-  sourcing
+  ensure_settings
+  more_sourcing
   act
-  reminder
 }
 steps
 echo the end

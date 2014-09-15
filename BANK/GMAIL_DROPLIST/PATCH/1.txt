@@ -1,0 +1,11 @@
+#debug: http://danielthat.blogspot.co.il/2012/10/how-to-send-email-from-command-line.html
+#bug: A temporary workaround is to edit the file /usr/bin/sendemail on line 1907 by changing 'SSLv3 TLSv1'in  to 'SSLv3',
+#sendEmail -f from@gmail.com -t to@domain.com -u "This is my subject"  -m "Body of my message" -s smtp.gmail.com -o tls=yes -xu username -xp password
+#url: https://packages.debian.org/unstable/mail/sendemail
+#depend_package: sendemail libio-socket-ssl-perl libnet-ssleay-perl
+#source: http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz
+#extra:
+# Define CC to (Note: for multiple CC use ,(comma) as seperator )
+# CC_TO="loginrahul90@gmail.com"
+
+
