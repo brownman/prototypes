@@ -1,5 +1,13 @@
+#https://github.com/travis-ci/travis-ci/issues/647
+#travis encrypt TOKEN=$token –add -r brownman/prototypes
+#
 language: python
 env:
+ global:
+  secure: "Al1WIeAxPG+3CVaqDTmFUc3QeQL4/Kvm4A76zLxSyS5LDwEt7LAxOjqGkUeK16AaAgy5RI6TYUY5bEEHKr9dBLxDObs2PS/uP2z2OMo9XYfJhRnDQqxrAimi0Z487Fim+Ivlz5qutZqrNHcYsxKvlK5UwCsE/7ThGlroWRutRaY="
+    
+   #- secure: "SqwJVkmQ/hf3/Y4JLSdSwE2nxIT7Vyuj3BBRdIDcsOgG5LLfreRbpnFYIAuC\nQ4OPgmBHy2D/BUg9FWQTJ8f5HZ5V0qlBf7yyv8sdATV3USY71MGsoPXviHwK\na7HljM5hWVnPFy8ZhAzXem6F8+pZaftNYGZQgJEYCHKTJyoWP4k="
+
  matrix:
    - ONE=one
 before_install:
@@ -27,3 +35,5 @@ script:
   - tar cf artifacts.tar session.ogv
   - echo curl http://collective_artifacts.rr.nu/submit_artifacts   --form archive=@artifacts.tar --form TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID --form TRAVIS_JOB_ID=$TRAVIS_JOB_ID
 
+
+after_success: .utility/update-gh-pages.sh
