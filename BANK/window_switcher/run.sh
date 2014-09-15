@@ -80,6 +80,7 @@ myself(){
 
 
 parse_line(){
+  set -u
   print func
   local file="$1"
   local tag="$2"
@@ -92,6 +93,7 @@ parse_line(){
 }
 
 task(){
+  set -u
   print func
   local file="$1"
   local tag="$2"
@@ -122,7 +124,8 @@ init_task(){
 
   task $file start
   while :;do
-    dialog_optional contine? && ( $cmd_sleep )   || break 
+    #dialog_optional contine? && ( $cmd_sleep )   || break 
+    dialog_yes_no 'y/n' 'another minute ?' && ( commander $cmd_sleep )   || break
   done
 
   task $file end
@@ -141,7 +144,8 @@ validate_symlinks(){
 
   #anchors
   #rm1 /tmp/hotkey.sh
-  test $file_hotkey -ef /tmp/hotkey.sh || (   rm1 /tmp/hotkey.sh; ln -s $file_hotkey /tmp/hotkey.sh
+#  test $file_hotkey -ef /tmp/hotkey.sh || (   rm1 /tmp/hotkey.sh; ln -s $file_hotkey /tmp/hotkey.sh
+echo
   )
   #rm1 /tmp/service.sh
   #ln -s $file_self /tmp/service.sh
@@ -157,7 +161,9 @@ loop(){
     xcowsay "wow!"
     sleep .1
     xcowsay "round: $counter" 
-    dialog_optional contine?  || break 
+    #dialog_optional contine?  || break 
+
+    dialog_yes_no 'y/n' 'magnify the small ?'  || break
     let counter+=1
     single 
     sleep 5

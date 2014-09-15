@@ -3,6 +3,8 @@ main:
     SELF: gvim -f $file_menu; $0
     many: MANY
     riddle: $( $dir_LEARN_BASH/run.sh )
+
+    share: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
     
 GENIUS:
     run: /tmp/dir_root/GENIUS.sh
@@ -11,13 +13,14 @@ GENIUS:
         #window_switcher
 
 MANY:
+    openbox: OPENBOX
     plan: $HOME/.gitbook/start.sh
     window_switcher: /tmp/service.sh certExam
     wish: gvim ~/possible.yaml
     wmctrl:   dialog_confirm switch_to 'wmctrl -a ' 
     mindmap: MINDMAP
     record: use_sh screencast; $builtin_screencast
-    talk_to: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
+
     edit: EDIT
     timing: TIMING
     wallpaper: /tmp/service.sh wallpaper
@@ -81,7 +84,7 @@ COWS:
 
 more:
     url: $dir_root/pairs.sh
-    openbox: OPENBOX
+
     timming: TIMING
     say_hi: xcowsay 'hello world' 
 
@@ -100,7 +103,6 @@ old:
     
 OPENBOX:
     edit: gvim -f ~/.config/openbox/rc.xml
-
     reconfigure: openbox --reconfigure
     hotkey_run: /tmp/hotkey.sh run
     hotkey_edit: gvim /tmp/hotkey.sh edit 
