@@ -1,18 +1,21 @@
 #https://github.com/travis-ci/travis-ci/issues/647
 #travis encrypt TOKEN=$token –add -r brownman/prototypes
 #
-language: python
+#
+#
+#language: python
+
+language: bash
 env:
  global:
   secure: "Al1WIeAxPG+3CVaqDTmFUc3QeQL4/Kvm4A76zLxSyS5LDwEt7LAxOjqGkUeK16AaAgy5RI6TYUY5bEEHKr9dBLxDObs2PS/uP2z2OMo9XYfJhRnDQqxrAimi0Z487Fim+Ivlz5qutZqrNHcYsxKvlK5UwCsE/7ThGlroWRutRaY="
-    
-   #- secure: "SqwJVkmQ/hf3/Y4JLSdSwE2nxIT7Vyuj3BBRdIDcsOgG5LLfreRbpnFYIAuC\nQ4OPgmBHy2D/BUg9FWQTJ8f5HZ5V0qlBf7yyv8sdATV3USY71MGsoPXviHwK\na7HljM5hWVnPFy8ZhAzXem6F8+pZaftNYGZQgJEYCHKTJyoWP4k="
+  matrix:
+    - ONE=one
 
- matrix:
-   - ONE=one
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq recordmydesktop x11-apps libpulse-dev pulseaudio dbus-x11 espeak mbrola-us2 pulseaudio-utils
+
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
@@ -20,6 +23,7 @@ before_script:
 build:
   - true
 script:
+  - echo let us try again
   - "recordmydesktop --no-cursor  --output=session.ogv &"
   - paplay <(espeak -vmb-us2  "Ok, let's get rickrolled" --stdout)
   - "firefox www.youtube.com/watch?v=oHg5SJYRHA0 &"
