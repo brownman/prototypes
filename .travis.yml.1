@@ -1,0 +1,34 @@
+#skip submodules:
+#https://github.com/ardumont/dot-files/blob/master/.travis.yml
+#https://github.com/travis-ci/travis-yaml/blob/master/spec/nodes/git_spec.rb
+#
+#  - gxmessage libnotify-bin gmail-notify curl vim-gtk pv cowsay toilet figlet sox libsox-fmt-mp3
+language: bash
+git:
+  submodules: false
+
+before_install:
+  - sudo apt-get install -y fortune pv toilet curl wget tree gxmessage zenity xcowsay notify-osd toilet figlet sox libsox-fmt-mp3
+
+before_script: 
+  - sudo add-apt-repository ppa:webupd8team/y-ppa-manager -y
+  - sudo apt-get update 
+  - sudo apt-get install yad
+
+script:  
+  - ./LIB/install.sh
+  - ./test.sh
+  #./install.sh
+after_script: ./INSTALL/present.sh
+  #bash #-c 'echo bye' 
+branches:
+  only:
+    - develop
+env:
+  global:
+    - url_travis="http://docs.travis-ci.com/user/build-configuration/"
+  matrix:
+    - USE_NETWORK=false
+notifications:
+  email:
+    - advance.linux2@gmail.com       
