@@ -6,4 +6,4 @@ LEARN_BASH
 - common_bash_mistakes: use the online bash- spell-checks extra links
 
 
-[demo: run](./DEMO/run.sh)
+[demo: run](./DEMO/run.gif)
