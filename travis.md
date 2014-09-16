@@ -7,6 +7,10 @@ TRAVIS SCREENCAST
 - https://github.com/travis-ci/travis.rb
 - http://lateralcoding.com/pushing-content-from-travis-ci-org-to-github/
 
+- http://stackoverflow.com/questions/18027115/committing-via-travis-ci-failing
+- http://sleepycoders.blogspot.co.il/2013/03/sharing-travis-ci-generated-files.html
+- https://raw.githubusercontent.com/Uko/Rubidium-WHOIS/master/.utility/update-gh-pages.sh
+
 commands:
 ```
 gem install travis
