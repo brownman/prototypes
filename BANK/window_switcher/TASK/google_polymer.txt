@@ -1,0 +1,2 @@
+start: wmctrl -a polymer || ( switch_to chrome )
+finish: xcowsay finish sample

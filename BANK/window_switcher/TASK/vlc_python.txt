@@ -1,0 +1,2 @@
+start: wmctrl -a vlc || ( switch_to thunar )
+finish: xcowsay finish sample
