@@ -1,6 +1,7 @@
 vlc 60
-lpi 60 'learning for lpi is sometimes super cool'
 free 120
+
+lpi 60 'learning for lpi is sometimes super cool'
 
 
 sleep 200

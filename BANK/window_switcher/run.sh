@@ -8,12 +8,27 @@ set -o nounset
 #set -e
 exec 2> >(tee /tmp/err)
 source /tmp/library.cfg
+#use1
+use ps1
+use ps4
+use assert
+  use where_am_i
+  use commander
+  use print
+  use trace
+  use cat1
+  use ensure
+  use who_am_i
+  use breaking
+  use dialog_sleep
+  use dialog_optional
+
 #pid  switcher lock
 
 intro(){
   print func
-  print color 33 'assuming: alt+F1: triggers /tmp/hotkey.sh run '
-  print color 34 'alt+F2: triggers: /tmp/hotkey.sh edit'
+ # print color 33 'assuming: alt+F1: triggers /tmp/hotkey.sh run '
+#  print color 34 'alt+F2: triggers: /tmp/hotkey.sh edit'
   #sleep 4
 }
 
@@ -28,16 +43,6 @@ update_handler_for_hotkey(){
   #print ok 'DONE !'
 }
 
-trap_err_service(){
-  use print
-  print func
-  print error 
-  local str_caller="`caller`" 
-  local cmd="gvim  +${str_caller}"
-  $( gxmessage -file /tmp/err -entrytext "$cmd" )
-  exit 0
-}
-
 
 testing(){
   #ls $dir_self/HOTKEY
@@ -45,23 +50,9 @@ testing(){
 }
 
 set_env(){
-
-
   #source /tmp/library.cfg
-
-  #USE
-  use assert
-  use where_am_i
-  use commander
-  use print
-  use trace
-  use cat1
-  use rm1
-  use who_am_i
-  use breaking
-  use dialog_sleep
-  use dialog_optional
-}
+  echo
+  }
 myself(){
   #SELF AWARE
   dir_self=`where_am_i $0` 
@@ -80,25 +71,24 @@ myself(){
 
 
 parse_line(){
+  #set -x
   set -u
+  set -e
   print func
   local file="$1"
   local tag="$2"
-  set +o pipefail
-  local cmd="cat $file | grep '^$tag:' -m1 | cut -d':' -f2-"
-  local str_res=$( eval "$cmd" )
-  #print color 33 "$str_res"
-  echo $str_res
-  # eval "$str_res"
+  print color 33 "file: $file tag:$tag"
+
+cat $file | grep '^$tag:' -m1 | cut -d':' -f2-
 }
 
 task(){
+  set -e
   set -u
   print func
   local file="$1"
   local tag="$2"
-  local   cmd=$(parse_line $file $tag )
-  echo 1>&2 $cmd
+  local   cmd=$( commander parse_line $file $tag )
   commander "$cmd"  &
 }
 
@@ -119,16 +109,17 @@ init_task(){
   cat1 $file true
   #sleep 5
   #  update_handler_for_hotkey $file 
+commander dialog_optional_edit $file
 
 
-
-  task $file start
+  commander task $file start
+  commander $cmd_sleep
   while :;do
     #dialog_optional contine? && ( $cmd_sleep )   || break 
     dialog_yes_no 'y/n' 'another minute ?' && ( commander $cmd_sleep )   || break
   done
 
-  task $file end
+# commander  task $file end
 }
 
 single(){
@@ -138,19 +129,6 @@ single(){
     [ -z "$line" ] && { breaking; }
     commander  init_task $line
   done< $file_list
-}
-validate_symlinks(){
-  #  trap trap_err_service ERR
-
-  #anchors
-  #rm1 /tmp/hotkey.sh
-#  test $file_hotkey -ef /tmp/hotkey.sh || (   rm1 /tmp/hotkey.sh; ln -s $file_hotkey /tmp/hotkey.sh
-echo
-  )
-  #rm1 /tmp/service.sh
-  #ln -s $file_self /tmp/service.sh
-
-
 }
 loop(){
 
