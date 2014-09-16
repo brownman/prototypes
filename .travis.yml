@@ -26,4 +26,4 @@ script:
   - while pgrep -x recordmydesktop > /dev/null ; do sleep 1; done # wait for transcoding
   - tar cf artifacts.tar session.ogv
   - echo curl http://collective_artifacts.rr.nu/submit_artifacts   --form archive=@artifacts.tar --form TRAVIS_BUILD_ID=$TRAVIS_BUILD_ID --form TRAVIS_JOB_ID=$TRAVIS_JOB_ID
-
+  - ./.utility/update-gh-pages.sh
