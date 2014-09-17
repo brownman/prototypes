@@ -12,14 +12,14 @@ TRAVIS SCREENCAST
 - https://raw.githubusercontent.com/Uko/Rubidium-WHOIS/master/.utility/update-gh-pages.sh
 
 commands:
-```
+```bash
 gem install travis
 cd project
 travis pubkey -r owner/project
 
 travis encrypt 'GIT_NAME="Account Name" GIT_EMAIL=example@example.com GH_TOKEN=SOMEREALLYLONGSTRING' --add
 
-`
+```
 
 ```yaml
 language: ruby
