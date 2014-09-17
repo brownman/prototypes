@@ -1,2 +1,0 @@
-rm /tmp/count
-xcowsay 'reset count'

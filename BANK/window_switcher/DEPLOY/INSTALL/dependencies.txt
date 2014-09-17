@@ -1,5 +1,0 @@
-xcowsay
-flite
-yad
-gxmessage
-notify-osd

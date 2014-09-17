@@ -17,8 +17,8 @@ DISPLAY=:0
 source /tmp/library.cfg
 #$cmd_trap_err
 #$cmd_trap_exit
-export dir_PROTOTYPES=/tmp/dir_root/SCRIPT/PROTOTYPES/BANK
-export dir_LEARN_BASH=$dir_PROTOTYPES/LEARN_BASH
+export dir_prototypes=/tmp/dir_root/SCRIPT/prototypes/BANK
+export dir_LEARN_BASH=$dir_prototypes/LEARN_BASH
 
 
 #set -x

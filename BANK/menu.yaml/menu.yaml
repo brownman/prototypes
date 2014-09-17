@@ -1,4 +1,6 @@
 main:
+    big_stones_first: /tmp/service.sh big_stones_first
+    creation: gvim $HOME/essay.yaml
     genius: GENIUS 
     SELF: gvim -f $file_menu; $0
     many: MANY

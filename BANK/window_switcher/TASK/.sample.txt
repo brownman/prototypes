@@ -1,2 +1,0 @@
-start: xcowsay start sample
-finish: xcowsay finish sample
