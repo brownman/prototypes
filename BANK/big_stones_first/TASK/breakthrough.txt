@@ -1,0 +1,4 @@
+hotkey: xcowsay 'hotkey breakthrough yey cool'
+start: xcowsay 'start breakthrough'
+end: xcowsay 'end breakthrough'
+something: shitty

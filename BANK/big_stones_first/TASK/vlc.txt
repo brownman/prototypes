@@ -1,0 +1,5 @@
+start: wmctrl -a  cisco || ( switch_to thunar )
+#thunar $HOME/Downloads/CCNA* )
+#use vlc1;  vlc1 $( ls -1l $HOME/Downloads/CCNA* | grep 6 )
+finish: xcowsay finish ccna
+#wmctrl -a mind || ( google-chrom-stable mindmap )

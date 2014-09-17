@@ -1,0 +1,25 @@
+lpi 60 'learning for lpi is sometimes super cool'
+
+free 120
+
+
+job_hunter 120
+
+vlc_python 180
+travis 120
+
+
+
+google_polymer 60
+
+
+
+sleep 200
+
+breakthrough 60
+
+
+
+job 60 
+
+eclipse 120

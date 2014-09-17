@@ -1,0 +1,2 @@
+start: wmctrl -a certExam || ( switch_to thunar)
+end: xcowsay 'finish certexam '
