@@ -20,3 +20,22 @@ travis pubkey -r owner/project
 travis encrypt 'GIT_NAME="Account Name" GIT_EMAIL=example@example.com GH_TOKEN=SOMEREALLYLONGSTRING' --add
 
 `
+
+```yaml
+language: ruby
+branches:
+  only:
+  - master
+rvm:
+- 2.0.0
+install:
+- git config --global user.email "bots@cocoapods.org"
+- git config --global user.name "CocoaPods Bot"
+- rake bootstrap
+script:
+- git remote set-url origin "https://${GH_TOKEN}@github.com/CocoaPods/blog.cocoapods.org.git"
+- rake deploy
+env:
+  global:
+    secure: XXXX
+```
