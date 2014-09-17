@@ -16,4 +16,7 @@ commands:
 gem install travis
 cd project
 travis pubkey -r owner/project
+
+travis encrypt 'GIT_NAME="Account Name" GIT_EMAIL=example@example.com GH_TOKEN=SOMEREALLYLONGSTRING' --add
+
 `
