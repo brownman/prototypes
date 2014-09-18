@@ -2,6 +2,8 @@ clear
 #set -e
 set -u
 source /tmp/library_proto.cfg
+$cmd_trap_err
+$cmd_trap_exit
 #init_lib
 pushd `dirname $0` >/dev/null
 

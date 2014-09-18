@@ -5,7 +5,7 @@ main:
     SELF: gvim -f $file_menu; $0
     many: MANY
     riddle: $( $dir_LEARN_BASH/run.sh )
-
+    linux_examples: $BROWSER http://www.cyberciti.biz/
     share: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
     
 GENIUS:
