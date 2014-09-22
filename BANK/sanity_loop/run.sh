@@ -1,5 +1,4 @@
 clear
-#set -e
 set -u
 source /tmp/library_proto.cfg
 $cmd_trap_err
@@ -10,7 +9,7 @@ pushd `dirname $0` >/dev/null
 loop(){
   local delay=${1:-60}
   while :;do
-commander     $builtin_commitment $delay || exit
+commander     $builtin_commitment $delay || break
 #breaking
   done
 }

@@ -1,5 +1,6 @@
-lpi 60 'learning for lpi is sometimes super cool'
-
+run 10 'edit self'
+lpi 10 'lpi exam is comming tomorrow!'
+wordpress 60 'first job - wow'
 free 120
 
 

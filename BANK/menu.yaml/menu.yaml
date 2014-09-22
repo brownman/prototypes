@@ -1,12 +1,22 @@
 main:
+    crontab: CRONTAB
+    wmctrl:   dialog_confirm switch_to 'wmctrl -a chrome' 
+    SELF: gvim -f $file_menu; $0
+    recent: $(dialog_menu_multiple /tmp/recent.txt)
+
+CRONTAB:
+    edit: gvim -f $file_crontab;crontab $file_crontab;xcowsay 'crontab restarted'
+    #/dir_root/SCRIPT/SCRIPT/crontab.txt
+
+else:
     big_stones_first: /tmp/service.sh big_stones_first
     creation: gvim $HOME/essay.yaml
     genius: GENIUS 
-    SELF: gvim -f $file_menu; $0
     many: MANY
     riddle: $( $dir_LEARN_BASH/run.sh )
     linux_examples: $BROWSER http://www.cyberciti.biz/
     share: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
+    edit: EDIT
     
 GENIUS:
     run: /tmp/dir_root/GENIUS.sh
@@ -16,14 +26,14 @@ GENIUS:
 
 MANY:
     openbox: OPENBOX
-    plan: $HOME/.gitbook/start.sh
+
     window_switcher: /tmp/service.sh certExam
     wish: gvim ~/possible.yaml
-    wmctrl:   dialog_confirm switch_to 'wmctrl -a ' 
+
     mindmap: MINDMAP
     record: use_sh screencast; $builtin_screencast
 
-    edit: EDIT
+
     timing: TIMING
     wallpaper: /tmp/service.sh wallpaper
     system: SYSTEM
@@ -54,10 +64,14 @@ BASH:
     abs: $( $dir_LEARN_BASH/abs/run.sh )
     lessons: $( $dir_LEARN_BASH/lessons/run.sh )
 
+    
+
+
 EDIT:
+    gitbook: $HOME/.gitbook/start.sh
     service: gvim /tmp/dir_root/SCRIPT/SERVICE
     openbox: OPENBOX
-    recent: $(dialog_menu_multiple /tmp/recent.txt)
+
     bookmark: $dir_self/pairs.sh
     library: gvim /tmp/library.cfg
     pilot.sh: gvim $0

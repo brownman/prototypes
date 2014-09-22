@@ -1,0 +1,2 @@
+start: xcowsay start wordpress
+finish: xcowsay finish wordpress

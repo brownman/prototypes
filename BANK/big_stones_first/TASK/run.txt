@@ -1,0 +1,2 @@
+start: dialog_optional_edit $0
+finish: xcowsay finish run.sh

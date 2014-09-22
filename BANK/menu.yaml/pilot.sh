@@ -3,22 +3,25 @@ notify-send pilot
 #gvim -f ~/idea.yaml 
 #info:   parse a menu which described in yaml
 #YAML VALIDATOR: http://yamllint.com/
-#exec -c
+exec -c
 #set -e
 #set -e
-exec 2> >( tee /tmp/err >&2)
-  exec 1> >( tee  /tmp/out_long )
-
+#exec 2> >( tee /tmp/err )
+#exec 1> >( tee  /tmp/out_long )
+set_env0(){
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/games
 TERM=xterm
 DISPLAY=:0 
+}
 
-source /tmp/library.cfg
+
 #$cmd_trap_err
 #$cmd_trap_exit
+exports(){
 export dir_prototypes=/tmp/dir_root/SCRIPT/prototypes/BANK
 export dir_LEARN_BASH=$dir_prototypes/LEARN_BASH
+}
 
 
 #set -x
@@ -35,6 +38,8 @@ ensure_anchor(){
 }
 
 using(){
+
+source /tmp/library.cfg
   use ps1
   use ps4
   use where_am_i
