@@ -1,34 +1,17 @@
 #!/bin/bash
-notify-send pilot 
-#gvim -f ~/idea.yaml 
 #info:   parse a menu which described in yaml
 #YAML VALIDATOR: http://yamllint.com/
+
+
+source /tmp/library.cfg
+notify-send pilot 
 exec -c
-#set -e
-#set -e
-#exec 2> >( tee /tmp/err )
-#exec 1> >( tee  /tmp/out_long )
-set_env0(){
-SHELL=/bin/bash
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/games
-TERM=xterm
-DISPLAY=:0 
-}
-
-
-#$cmd_trap_err
-#$cmd_trap_exit
 exports(){
 export dir_prototypes=/tmp/dir_root/SCRIPT/prototypes/BANK
+export dir_SERVICE=/tmp/dir_root/SCRIPT/SERVICE
 export dir_LEARN_BASH=$dir_prototypes/LEARN_BASH
 }
 
-
-#set -x
-#set -e
-#shopt -s expand_aliases
-
-#pushd `dirname $0` >/dev/null
 ensure_anchor(){
   file_self=$(who_am_i $0 )
   if [ ! /tmp/pilot.sh -ef "$file_self" ];then
@@ -39,8 +22,9 @@ ensure_anchor(){
 
 using(){
 
-source /tmp/library.cfg
+
   use ps1
+  use open_with
   use ps4
   use where_am_i
   use dialog_confirm
@@ -63,11 +47,11 @@ act_on_list1 ()
 { 
   local file=$1;
   local cmd=${2:-source};
-  while read line; do
+  #while read line; do
     local         cmd1="$cmd $line";
     echo "$cmd1";
     eval "$cmd1"
-  done < $file
+  #done < $file
 }
 
 
@@ -98,6 +82,7 @@ menu_subject(){
   #indicator "$res"
   if [ $res -eq 1 ];then
     broadcast1 "sub-menu" &
+    print color 33 recursive call in order to extract by subject
     eval "menu_subject \"$str\""
   else
 
@@ -109,7 +94,7 @@ print color 33 "[ACTION] $str"
     else
  #     echo "$str"
 #      local cmd_final=$( "$str" )
-eval "$str" &
+commander "$str" &
     fi
   fi
 }
@@ -174,17 +159,19 @@ steps(){
   using
   set_env
   validate_list
-  menu_subject main
+  commander "menu_subject $first_menu"
 #  validate_no_errors
 }
 
 MODE_CONFIRM=false
-if [ $# -eq 0 ];then
+exports
+first_menu=${1:-MAIN}
+#if [ $# -eq 0 ];then
   steps
-else
-  echo set_env
-  echo  parse_record "$@"
-fi
+#else
+#  echo set_env
+#  echo  parse_record "$@"
+#fi
 
 cat1 /tmp/err true
 #gxmessage -file /tmp/err

@@ -1,21 +1,58 @@
-main:
-    crontab: CRONTAB
-    wmctrl:   dialog_confirm switch_to 'wmctrl -a chrome' 
+MAIN:
     SELF: gvim -f $file_menu; $0
-    recent: $(dialog_menu_multiple /tmp/recent.txt)
+    act: ACT
+    edit: EDIT
+    
+#  kill: killall awake.sh; xcowsay $?
+ACT:
+    task: TASK
+    switch: SWITCH
+    game: GAME
+    bookmark: $dir_self/pairs.sh
+    share: /tmp/dir_root/SCRIPT/prototypes/BANK/GMAIL_DROPLIST/run.sh
 
-CRONTAB:
-    edit: gvim -f $file_crontab;crontab $file_crontab;xcowsay 'crontab restarted'
+
+        
+
+SWITCH:
+    temp: chmod u+x /tmp/temp.sh; /tmp/proxy.sh /tmp/temp.sh
+    chrome:   dialog_confirm switch_to 'wmctrl -a chrome' || google-chrome-stable
+    switch_to: /tmp/service.sh wmctrl
+
+
+WALLPAPER:
+    edit_main: gvim /home/paretech/Downloads/do_for_others_first/SCRIPT/SERVICE/LIST/wallpaper.txt
+#    edit_main: gvim $dir_SERVICE/LIST/wallpaper.txt
+    edit_conf: gvim $dir_SERVICE/DIR/WALLPAPER/CONF
+    run: /tmp/service.sh wallpaper
+
+TASK:
+    riddle: $( $dir_LEARN_BASH/run.sh )
+    brightness: /tmp/service.sh brightness 41
+    big_stones_first: /tmp/service.sh big_stones_first
+    certExam: /tmp/service.sh certExam 
+    share: /tmp/service.sh share
+    cronie: /tmp/service.sh ensure_service
+
+EDIT:
+    shoes: gvim -f ~/shoes.yaml
+    url_add_by_subject: gvim $HOME/urls.txt    
+    wallpaper: WALLPAPER
+    RESENT: $(dialog_menu_multiple /tmp/recent.txt)
+    edit_wallpaper: gvim /tmp/dir_root/SCRIPT/SERVICE/LIST/wallpaper.sh
+    edit_service: gvim /tmp/dir_root/SCRIPT/SERVICE
+    crontab: /tmp/service.sh crontab 
+    wallpaper: WALLPAPER
+
+    openbox: OPENBOX
     #/dir_root/SCRIPT/SCRIPT/crontab.txt
 
-else:
-    big_stones_first: /tmp/service.sh big_stones_first
+ELSE:
     creation: gvim $HOME/essay.yaml
     genius: GENIUS 
     many: MANY
-    riddle: $( $dir_LEARN_BASH/run.sh )
+
     linux_examples: $BROWSER http://www.cyberciti.biz/
-    share: $dir_PROTOTYPES/GMAIL_DROPLIST/run.sh
     edit: EDIT
     
 GENIUS:
@@ -25,7 +62,7 @@ GENIUS:
         #window_switcher
 
 MANY:
-    openbox: OPENBOX
+
 
     window_switcher: /tmp/service.sh certExam
     wish: gvim ~/possible.yaml
@@ -67,12 +104,12 @@ BASH:
     
 
 
-EDIT:
+EDIT1:
     gitbook: $HOME/.gitbook/start.sh
     service: gvim /tmp/dir_root/SCRIPT/SERVICE
     openbox: OPENBOX
 
-    bookmark: $dir_self/pairs.sh
+
     library: gvim /tmp/library.cfg
     pilot.sh: gvim $0
     root: gvim /tmp/dir_root
@@ -132,8 +169,9 @@ POWNDER:
     WISH: gvim $dir_workspace/wish.yaml
     ROBOT: gvim $dir_workspace/robot.yaml
 
-MAIN:        
+MAIN1:        
     WALLPAPER: $dir_library_bank_cfg/LISTS/think_small.sh wallpaper_quote
+
     BREAKTHROUGH: $dir_library_bank_cfg/LISTS/think_small.sh commitment
     TIMING: TIMING
 
@@ -154,4 +192,18 @@ TIMING:
 
 
 
-
+GAME:
+    task: TASK
+    google: www.google.com
+    langs: LANGS
+    time: TIME
+    50langs: /tmp/service.sh essay 
+        
+TIME:
+    calendar: https://www.google.com/calendar/
+    task: https://mail.google.com/tasks/ig?pli=1
+    plants: http://www.organico.co.il/plant-categories
+        
+LANGS:
+    IT: open_with http://www.goethe-verlag.com/book2/EM/EMIT/EMIT002.HTM
+    children_songs: open_with http://www.mamalisa.com/?p=824&t=ec&c=120

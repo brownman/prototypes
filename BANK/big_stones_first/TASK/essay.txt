@@ -1,0 +1,2 @@
+start: /tmp/service.sh essay
+finish: xcowsay finish sample

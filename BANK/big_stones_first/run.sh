@@ -136,7 +136,7 @@ init_task(){
   commander $cmd_sleep
   while :;do
     #dialog_optional contine? && ( $cmd_sleep )   || break 
-    dialog_yes_no 'another minute ?' && ( point_up; commander $cmd_sleep1 )   || break
+    dialog_optional 'another minute ?' && ( point_up; commander $cmd_sleep1 )   || break
   done
 
   # commander  task $file end
@@ -161,7 +161,7 @@ loop(){
   while :;do
     #dialog_optional contine?  || break 
     #dialog_optional_edit $0;
-    dialog_yes_no 'magnify the small ?'  ||  exiting;
+    dialog_optional 'magnify the small ?'  ||  exiting;
    # $( use_sh awake 20 ); 
     commander sleep 4
     commander    point_up

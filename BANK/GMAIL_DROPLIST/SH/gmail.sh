@@ -10,7 +10,6 @@ use commander
 use exiting 
 $cmd_trap_err
 $cmd_trap_exit
-isdfsdfsdf
 
 
 intro(){

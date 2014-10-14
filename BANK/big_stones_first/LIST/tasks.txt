@@ -1,7 +1,13 @@
-run 10 'edit self'
-lpi 10 'lpi exam is comming tomorrow!'
+essay 60
+children 60
 wordpress 60 'first job - wow'
 free 120
+
+#/tmp/service.sh essay
+
+
+run 10 'edit self'
+lpi 10 'lpi exam is comming tomorrow!'
 
 
 job_hunter 120

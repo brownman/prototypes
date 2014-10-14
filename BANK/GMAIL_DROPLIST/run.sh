@@ -43,7 +43,7 @@ exporting(){
   export dir_self=$( where_am_i $0 )
   export file_script=$dir_self/SH/gmail.sh
   export file_settings=$HOME/gmail.conf 
-  export dir_txt=$dir_self/TXT
+  export dir_txt=$dir_workspace/MAIL #TXT
   export dir_cfg=$dir_self/CFG
   export dir_log=$dir_self/LOG
   export dir_conf=$dir_self/CONF
@@ -77,7 +77,8 @@ act(){
       local cmd="$file_script ${arr[@]}"
 #      echo  "[cmd] $cmd"
 #      eval "$cmd" 
-      commander $cmd
+echo $cmd
+      dialog_confirm 'sending mail:' "$cmd"
       ;;
     *)
       echo "[skipping] un-known code"
