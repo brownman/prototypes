@@ -10,7 +10,7 @@ source /tmp/library.cfg
 single(){
 
   local delay=${1:-60}
-commander     "$builtin_commitment $delay" || break
+commander     "$builtin_commitment $delay" || exit
 }
 
 loop(){

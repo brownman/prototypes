@@ -94,7 +94,8 @@ print color 33 "[ACTION] $str"
     else
  #     echo "$str"
 #      local cmd_final=$( "$str" )
-commander "$str" &
+
+commander "open_with $str" &
     fi
   fi
 }
@@ -156,6 +157,8 @@ validate_no_errors(){
 }
 
 steps(){
+  point_up
+  point_show
   using
   set_env
   validate_list
@@ -163,6 +166,36 @@ steps(){
 #  validate_no_errors
 }
 
+while getopts ":e:" opt; do
+
+  #http://wiki.bash-hackers.org/scripting/posparams
+  case $opt in
+    e)
+      echo "-e was triggered, Parameter: $OPTARG" >&2
+      str1=$(cat $dir_workspace/switch.txt | grep $OPTARG | cut -d':' -f1)
+      str2=$(cat $dir_workspace/switch.txt | grep $OPTARG | cut -d':' -f2-)
+      echo result: $str1
+      sleep 2
+      switch_to "$str1" "$str2"
+      exit 0
+      ;;
+    :)
+      echo no params
+      ;;
+  esac
+done
+
+#hotkey_overide /tmp/service.sh crontab
+line_readonly=( $@ )
+testing && steps
+
+
+
+
+
+
+
+#p
 MODE_CONFIRM=false
 exports
 first_menu=${1:-MAIN}

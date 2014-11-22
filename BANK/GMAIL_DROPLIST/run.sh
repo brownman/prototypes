@@ -18,7 +18,6 @@ use exiting
 ensure_settings(){
   local file=$file_settings
   if [ -f $file ];then
-    #gvim $file
     source $file ;
   else
     xcowsay 'create new settings file'
@@ -64,7 +63,7 @@ act(){
       echo "[Good bye]"
       ;;
     2)
-      gvim $dir_self
+      gvim $file_to
       ;;
     0)
       echo $str

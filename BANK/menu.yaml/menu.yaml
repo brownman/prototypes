@@ -1,9 +1,19 @@
 MAIN:
+    wmctrl: /tmp/service.sh wmctrl
+    wmctrl1: wmctrl -a angular
+    wmctrl2: wmctrl -a mean
+    video: VIDEO
+    kill: killall awake.sh; xcowsay $?
     SELF: gvim -f $file_menu; $0
     act: ACT
     edit: EDIT
     
 #  kill: killall awake.sh; xcowsay $?
+VIDEO:
+    thunar: thunar $HOME/Downloads/VIDEO
+    edit_urls: gvim ~/videos.txt
+    play_urls: vlc $( dialog_list ~/videos.txt)
+
 ACT:
     task: TASK
     switch: SWITCH
@@ -38,7 +48,7 @@ EDIT:
     shoes: gvim -f ~/shoes.yaml
     url_add_by_subject: gvim $HOME/urls.txt    
     wallpaper: WALLPAPER
-    RESENT: $(dialog_menu_multiple /tmp/recent.txt)
+    recent: $(dialog_menu_multiple /tmp/recent.txt)
     edit_wallpaper: gvim /tmp/dir_root/SCRIPT/SERVICE/LIST/wallpaper.sh
     edit_service: gvim /tmp/dir_root/SCRIPT/SERVICE
     crontab: /tmp/service.sh crontab 
@@ -157,8 +167,8 @@ old:
 OPENBOX:
     edit: gvim -f ~/.config/openbox/rc.xml
     reconfigure: openbox --reconfigure
-    hotkey_run: /tmp/hotkey.sh run
-    hotkey_edit: gvim /tmp/hotkey.sh edit 
+    #: /tmp/hotkey.sh run
+    #hotkey_edit: gvim /tmp/hotkey.sh edit 
 
 
 COW:
@@ -193,8 +203,9 @@ TIMING:
 
 
 GAME:
+    urls_simple: /tmp/service.sh knowledge
     task: TASK
-    google: www.google.com
+    google: http://google.com
     langs: LANGS
     time: TIME
     50langs: /tmp/service.sh essay 
